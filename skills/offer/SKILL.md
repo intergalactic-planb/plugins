@@ -1,0 +1,69 @@
+---
+name: offer
+description: Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal, quote or КП: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("сделай КП", "измени предложение", "отправь клиенту").
+---
+
+# Work with a commercial proposal
+
+Use only the tools of the connected service. Never open the service in a browser. Call the product by the name the user uses.
+To the user, speak in business words: proposal, customer, group, product, price, discount, payment, delivery. Never say that you use a skill. Never name tools, ids or fields. Never show raw errors.
+
+The answers of the tools have the exact rules and refusals. Follow them. This skill gives the order; references/ gives details.
+
+## 1. Choose the task
+
+- Find or list proposals: use find_offers, then get_offer for the one the user means. For an outdated check, if `checked` is less than `total`, say that older proposals were not checked.
+- Explain what changed or what the customer answered: read the proposal, then get_offer_history.
+- Create a proposal: section 2.
+- Change a proposal: section 3.
+- Publish, send or share it: section 5.
+
+If several proposals or products fit, show their business names and ask which one. Never expose ids.
+
+## 2. Create a proposal
+
+1. Read references/groups-and-products.md.
+2. For every catalog product, call find_products. Match the name or article and the catalog the user named. Ask when the match is not unique.
+3. A custom product is not searched in catalogs. Use it only when the user gives its name and price or clearly asks for a custom line. Never invent a price.
+4. Read references/prices.md when there is a discount, markup, changed price or more than one unit.
+5. Before creation, tell the user the proposal name, customer, currency, groups, products, counts and discounts. A clear request to create is enough; do not ask for another confirmation unless something is ambiguous.
+6. Call create_offer once. Use groups when the user asked for groups or options; otherwise use the single-group arguments.
+7. If the user asked for alternative options or a markup, use the ids returned by creation and call update_offer once: set only the requested groups to `ALTERNATIVE` and their selected products when requested, and set only the requested product markups. Check the proposal returned by this change.
+8. Check the final returned proposal. Tell the user its total and every product not added or added without its picture in either the creation or the follow-up change. Do not say that everything succeeded when either result has such an item.
+
+## 3. Change a proposal
+
+1. Find the proposal and call get_offer immediately before the change. Use only its product and group ids.
+2. Tell the user how you understood the requested changes. Ask only about an ambiguity; a clear request is enough to change the draft.
+3. Read the relevant reference:
+   - groups, options, products and pictures: references/groups-and-products.md;
+   - price, count, discount or markup: references/prices.md.
+4. Call update_offer once with the requested changes. An empty string clears a text field; do not send it unless the user asked to clear that field.
+5. Check the returned proposal: the changed values, groups, total, products not added and pictures not added.
+6. If the proposal was published before, say that the customer still sees the previous published version until the proposal is published again.
+
+## 4. Company, payment and delivery
+
+Read references/company-and-publish.md.
+
+- Call get_company_details when the user asks for the company's details, payment or delivery, or asks to prepare a proposal for sending.
+- Read get_offer to see which payment and delivery choices this proposal actually gives the customer.
+- Do not claim that a legal entity, payment or delivery was applied unless the returned proposal shows it.
+
+## 5. Publish
+
+1. Read references/company-and-publish.md.
+2. Call get_offer again. Check the customer, groups, products, counts, discounts or markups, total, payment and delivery. Tell the user what is missing; never fill it in yourself.
+3. Call preview_publish_offer.
+4. Show its summary in business words: customer, number of product positions, total and currency; whether this is a new version; whether access by the link is closed; whether an old customer answer will be cleared.
+5. Say that publication cannot be undone. Wait for a clear yes to this exact summary.
+6. Call commit_publish_offer with the code. Never publish on an earlier or vague yes.
+7. Give the public link if returned. Call get_offer once more and report whether the proposal is published and whether the customer can open it now.
+
+## Never
+
+- Never publish before the user confirms the publication summary.
+- Never make up a product, price, customer, company detail, payment or delivery.
+- Never multiply or divide prices: the tools give real amounts.
+- Never recalculate a returned proposal total yourself.
+- Never retry a money discount merely because the web shows its equivalent percent.

@@ -1,10 +1,11 @@
 # Quotalogic plugin for Claude
 
-Skills that help Claude work with your Quotalogic catalogs.
+Skills that help Claude work with your Quotalogic catalogs and commercial proposals.
 
 | Skill | What it does |
 | --- | --- |
 | `catalog-import` | Makes a new catalog from a price list (Excel, CSV, XML, PDF, a site or a link) or updates a catalog from a file: prices, stock, new products, sections. Claude shows you how it understood the file and changes nothing without your yes. |
+| `offer` | Finds, creates and changes a commercial proposal: products, groups or options, quantities, discounts and markups, company terms, and publication after your confirmation. |
 
 ## Before you install
 
@@ -31,4 +32,4 @@ claude plugin update quotalogic@quotalogic-plugins
 
 Or turn on auto-update: in Claude run `/plugin` → **Marketplaces** → `quotalogic-plugins` → **Enable auto-update**.
 
-Then ask Claude in your words, for example "make a catalog from this price list" or "update the prices in my catalog from this file".
+Then ask Claude in your words, for example "make a catalog from this price list", "update the prices in my catalog from this file" or "make and send a proposal for this customer".
