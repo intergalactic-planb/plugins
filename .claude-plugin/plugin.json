@@ -1,5 +1,5 @@
 {
   "name": "quotalogic",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Quotalogic for Claude: skills for working with catalogs (import a price list into a new catalog or update a catalog from a file). Connect the Quotalogic connector first."
 }

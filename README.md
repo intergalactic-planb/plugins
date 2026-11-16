@@ -4,7 +4,7 @@ Skills that help Claude work with your Quotalogic catalogs.
 
 | Skill | What it does |
 | --- | --- |
-| `catalog-import` | Makes a new catalog from a price list (Excel, CSV, XML/YML, PDF, a site or a link) or updates a catalog from a file: prices, stock, new products, sections. Claude shows you how it understood the file and changes nothing without your yes. |
+| `catalog-import` | Makes a new catalog from a price list (Excel, CSV, XML, PDF, a site or a link) or updates a catalog from a file: prices, stock, new products, sections. Claude shows you how it understood the file and changes nothing without your yes. |
 
 ## Before you install
 

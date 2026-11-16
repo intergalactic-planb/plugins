@@ -1,6 +1,6 @@
 ---
 name: catalog-import
-description: Import products into the catalog service (Quotalogic, Quotcat) from a file. A new catalog from Excel, CSV, YML/XML, PDF, a site or a link, or an update of a catalog that is there (prices, stock, new products, sections). Use when the user gives a price list or a file of a supplier and wants it in a catalog ("import this price list", "make a catalog from this file", "update the prices from this file", "загрузи прайс").
+description: Import products into a catalog from a file. A new catalog from Excel, CSV, XML, PDF, a site or a link, or an update of a catalog that is there (prices, stock, new products, sections). Use when the user gives a price list or a file of a supplier and wants it in a catalog ("import this price list", "make a catalog from this file", "update the prices from this file", "загрузи прайс").
 ---
 
 # Import a file into a catalog
@@ -36,17 +36,17 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 5. Tell the user what you found: which products change and from what to what, exact pairs, doubtful pairs, new rows, skipped rows, problems of the file. Give the user the CSV of the pairs. A doubtful pair is taken only after the user said yes to it.
 6. Call preview_import with matchReport. If its answer has "next", do it before anything else.
 7. Tell the user the summary, and that it cannot be undone. Wait for a clear "yes".
-8. Call commit_import with the code. Run the command. Call import_status once. Do not read the products again to check.
+8. Call commit_import with the code. Run the command. Call import_status once. After success, call get_catalog_snapshot with the key and the changed columns and check every affected row against the summary. Tell the user about any difference; do not try to correct it without a new preview and yes.
 
 - New rows are added only after the user said yes to "N rows are new, add them?" (addNew), and only if they fit the limit of products of the tariff.
-- Sections change only from a YML file, and only the way the user chose: keep, move (the products go to their sections of the file) or add (they get one more section and keep the old ones).
+- Sections change only from XML, and only the way the user chose: keep, move (the products go to their sections of the file) or add (they get one more section and keep the old ones).
 - Apply a file always with the import, even when few products change.
 
 ## 4. How the file gets to the service
 
 - You can run commands with network: the command from the answer of the tool (the default).
 - The file is attached to the chat: give it in file.
-- A CSV or YML you made, or a small file and no network: fileText.
+- An XML or CSV you made, or a small file and no network: fileText.
 - A link the user gave: fileUrl.
 
 ## 5. When it fails
