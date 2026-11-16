@@ -1,0 +1,12 @@
+{
+  "name": "quotalogic-plugins",
+  "description": "Plugins of Quotalogic for Claude",
+  "owner": { "name": "Quotalogic" },
+  "plugins": [
+    {
+      "name": "quotalogic",
+      "source": "./",
+      "description": "Skills for Quotalogic catalogs: import a price list into a new catalog or update a catalog from a file."
+    }
+  ]
+}
