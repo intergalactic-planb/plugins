@@ -6,6 +6,7 @@ Skills that help Claude work with your Quotalogic catalogs and commercial propos
 | --- | --- |
 | `catalog-import` | Makes a new catalog from a price list (Excel, CSV, XML, PDF, a site or a link) or updates a catalog from a file: prices, stock, new products, sections. Claude shows you how it understood the file and changes nothing without your yes. |
 | `catalog-edit` | Edits catalogs by hand: product values and moves after confirmation, column roles and currencies, names, sections, extra columns, and listed new products. Files use catalog-import. |
+| `currency-conversion` | Adds a calculated price column in another currency, uses the effective bank rate, or changes the shared pair to a confirmed custom rate and back. |
 | `offer` | Finds, creates and changes a commercial proposal: products, groups or options, quantities, discounts and markups, company terms, and publication after your confirmation. |
 
 ## Before you install
