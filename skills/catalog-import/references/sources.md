@@ -5,6 +5,8 @@ The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, incl
 ## Read the source
 
 - Read it with your own tools: a PDF with your tool that reads files, as it is; a site in the browser, all its pages and sections. Do not look for, check or install programs for PDF.
+- A PDF of up to 10 pages: read the whole file at once, without a range of pages: a range of pages needs a program that may be missing. A longer PDF: read it in ranges of up to 10 pages; if that fails, ask the user to paste the text or send an Excel file.
+- A site whose products appear only after the page runs its scripts (the HTML has no products): open it in the browser and go through every category and product page. No browser: say so and ask for a browser, an export of the products or their text. Never guess addresses of the site.
 - Take only the products. Leave out the header of the document, the titles of sections (they become sections), the totals, notes like "with VAT".
 - An Excel file that the import would read wrong (titles of sections in the rows, merged cells, empty columns, several properties in one cell): read every sheet yourself and make one table.
 - Several files with a common identifier (a price list and a list of descriptions): read every file, join them by the identifier, one row a product.
