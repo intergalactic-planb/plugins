@@ -32,8 +32,8 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 1. Call get_catalog: columns, types, roles. Choose the key column: references/columns.md.
 2. The file has a column that the catalog has not, and the user wants it: make it first with create_field.
 3. Call get_catalog_snapshot with only the columns you need to match and to change.
-4. Match the file with the snapshot by references/matching.md: with a script, not in the chat.
-5. Tell the user what you found: which products change and from what to what, exact pairs, doubtful pairs, new rows, skipped rows, problems of the file. Give the user the CSV of the pairs. A doubtful pair is taken only after the user said yes to it.
+4. Match the file with the snapshot by references/matching.md: with a script, not in the chat. A matching key makes candidates, not a final pair; compare the other available data before accepting one.
+5. Tell the user what you found: which products change and from what to what, exact pairs, doubtful pairs, new rows, skipped rows, problems of the file. Give the user the CSV of the pairs. List every row used for several products and every key repeated in the file; say what differs or which row you chose, and whether the user confirmed it. Ask about every unconfirmed choice and leave its products out until the user answers.
 6. Call preview_import with matchReport. If its answer has "next", do it before anything else.
 7. Tell the user the summary, and that it cannot be undone. Wait for a clear "yes".
 8. Call commit_import with the code. Run the command. Call import_status once. After success, call get_catalog_snapshot with the key and the changed columns and check every affected row against the summary. Tell the user about any difference; do not try to correct it without a new preview and yes.
