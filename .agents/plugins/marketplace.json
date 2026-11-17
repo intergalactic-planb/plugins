@@ -1,0 +1,21 @@
+{
+  "name": "quotalogic-plugins",
+  "interface": {
+    "displayName": "Quotalogic Plugins"
+  },
+  "plugins": [
+    {
+      "name": "quotalogic",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/intergalactic-planb/plugins.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

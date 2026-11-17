@@ -1,0 +1,23 @@
+{
+  "name": "quotalogic",
+  "version": "0.5.0",
+  "description": "Quotalogic skills for importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals. Connect Quotalogic first.",
+  "author": {
+    "name": "Quotalogic"
+  },
+  "repository": "https://github.com/intergalactic-planb/plugins",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Quotalogic",
+    "shortDescription": "Catalog and proposal skills",
+    "longDescription": "Reusable workflows for Quotalogic catalogs, currency conversion, and commercial proposals. Requires a separate Quotalogic MCP connection.",
+    "developerName": "Quotalogic",
+    "category": "Productivity",
+    "capabilities": ["Instructions"],
+    "defaultPrompt": [
+      "Import this price list into a new catalog.",
+      "Update my catalog from this file.",
+      "Create a commercial proposal for this customer."
+    ]
+  }
+}

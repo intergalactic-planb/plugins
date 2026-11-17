@@ -1,7 +1,9 @@
 {
   "name": "quotalogic-plugins",
   "description": "Plugins of Quotalogic for Claude",
-  "owner": { "name": "Quotalogic" },
+  "owner": {
+    "name": "Quotalogic"
+  },
   "plugins": [
     {
       "name": "quotalogic",
