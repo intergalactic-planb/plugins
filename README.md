@@ -25,6 +25,12 @@ codex plugin list --marketplace quotalogic-plugins
 
 Restart ChatGPT desktop or start a new Codex chat after installation.
 
+## Use in Codex and ChatGPT desktop Work
+
+Type `$` and select a skill such as `$quotalogic:catalog-import`. On this surface, `@` searches files and previous chats; it does not invoke a skill.
+
+For an import check, make the agent show the column mapping and wait for a separate yes. After the import, ask it to read the created product and compare the stored values with the file. A known backend import bug can store a fractional price one cent lower (`19.99` as `19.98`) while reporting success with no warnings. Use a whole-number test price when checking only the plugin, or verify every fractional price until the backend is fixed.
+
 ## Install in Claude Code
 
 ```bash
