@@ -26,7 +26,7 @@ After the import read the columns with get_catalog. If the price, the code or th
 
 - The file clearly states one currency (руб, ₽, RUB, €, $… at the prices or in the header): give it as "currency".
 - It states none: the currency of the workspace (get_connection_info, read it always).
-- Several currencies, or a doubt (the prices look like another currency): ask the user.
+- Several currencies, or a doubt (the prices look like another currency): ask which one is the currency of the catalog.
 - The user names another one: take it.
 - Before the yes tell the user the currency of the catalog, and when it is not the one of the workspace, both ("the catalog will be in RUB, the workspace is in EUR").
 - Not every currency is allowed: a refusal lists the allowed ones. Tell the user and ask; never convert the prices.
@@ -34,4 +34,5 @@ After the import read the columns with get_catalog. If the price, the code or th
 ## The currency of a money column
 
 - Excel and XML: a money column gets its currency from the file (the format of the cell, the attribute of the price).
+- When you make XML and a source price is in another currency, keep it in its own money column: `<param name="USD" unit="USD">95</param>`. Map `USD` as money. Use the currency code as the name, without "Price" or its translation: the extra column must not take the role of the main price. Never drop or convert the value; omit the param only when that product has no such price.
 - CSV: it can not. If such a column is clearly in another currency, tell the user it will be in the currency of the catalog and ask what to do.
