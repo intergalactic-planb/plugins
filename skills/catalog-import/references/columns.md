@@ -29,10 +29,11 @@ After the import read the columns with get_catalog. If the price, the code or th
 - Several currencies, or a doubt (the prices look like another currency): ask which one is the currency of the catalog.
 - The user names another one: take it.
 - Before the yes tell the user the currency of the catalog, and when it is not the one of the workspace, both ("the catalog will be in RUB, the workspace is in EUR").
-- Not every currency is allowed: a refusal lists the allowed ones. Tell the user and ask; never convert the prices.
+- Not every currency is allowed: a refusal lists the allowed ones. Tell the user and ask which allowed currency to use for the catalog; never convert the prices.
+- If a source currency was refused, the allowed catalog currency is only technical for values outside it. For a product with no price in the chosen catalog currency, leave the main price empty and keep every source amount in its own money column named by its currency, as below. Never relabel a source amount with the allowed currency.
 
 ## The currency of a money column
 
 - Excel and XML: a money column gets its currency from the file (the format of the cell, the attribute of the price).
-- When you make XML and a source price is in another currency, keep it in its own money column: `<param name="USD" unit="USD">95</param>`. Map `USD` as money. Use the currency code as the name, without "Price" or its translation: the extra column must not take the role of the main price. Never drop or convert the value; omit the param only when that product has no such price.
+- When you make XML and a source price is outside the catalog currency, including a source currency refused for the catalog, keep it in its own money column: `<param name="USD" unit="USD">95</param>`. Map `USD` as money. Use the currency code as the name, without "Price" or its translation: the extra column must not take the role of the main price. Never drop, convert or relabel the value; omit the param only when that product has no such price.
 - CSV: it can not. If such a column is clearly in another currency, tell the user it will be in the currency of the catalog and ask what to do.

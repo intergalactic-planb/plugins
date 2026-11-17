@@ -15,7 +15,7 @@ The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, incl
 
 - The name exactly as written, letter by letter: do not change mixed Latin and Cyrillic letters, spaces or dashes.
 - The price is the number only, with a dot (12,50 → 12.50). Never make it up.
-- Several currencies: ask which one is the currency of the catalog. Keep every source price; never drop or convert one. The XML form is below.
+- Several currencies, or a source currency refused for the catalog: ask which allowed currency is the currency of the catalog. Keep every source price in its own currency; never drop, convert or relabel one. The XML form is below.
 - The characteristics that most products have are columns of the kind text (a size, a material, a weight…); the ones of one product go into the description.
 - Pictures: a site gives them — a column of the kind list with the full addresses of the pictures of the product (https://…, as the page shows them, not made up); several in one cell are separated by ; (put such a cell in double quotes). A PDF gives none.
 - Never add a column that no source has.
@@ -49,7 +49,7 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
 - `<name>` with the catalog name must be the first child of `<export>`. For an update, use the current catalog name.
 - A flat PDF omits the whole `<categories>` block and every `<categoryId>`.
 - An `<offer>` is a product: `<name>`, `<price>` (a number), `<currencyId>` (the currency of the catalog), `<categoryId>` (no tag — the root), `<vendorCode>` if the source has a code, `<description>`, and a `<param name="…">` for each characteristic. For a site, add one `<picture>` for each picture address; a PDF gives none.
-- `<price>` with `<currencyId>` is the main price in the currency of the catalog. A source price in another currency is its own money column: `<param name="USD" unit="USD">95</param>`. Add `USD → USD → money` to the mapping. Use the currency code as the column name: do not add "Price" or its translation, because that may take the role of the main price. Omit this param only from products that have no such price. Never put the number into the main price, drop it or convert it.
+- `<price>` with `<currencyId>` is the main price in the currency of the catalog. A source price outside that currency, including a source currency refused for the catalog, is its own money column: `<param name="USD" unit="USD">95</param>`. Add `USD → USD → money` to the mapping. Use the currency code as the column name: do not add "Price" or its translation, because that may take the role of the main price. If a product has no source price in the catalog currency, omit `<price>`. Omit the param only when that product has no such source price. Never put the number into the main price, drop it, convert it or relabel it.
 - No price ("on request", empty): omit `<price>` completely. Never write an empty `<price></price>` or `<price/>`: the import turns it into price 0.
 - The ids of categories are numbers; every `<categoryId>` must be a listed `<category>`.
 - Write & as &amp; and < as &lt;.
