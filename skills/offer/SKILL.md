@@ -1,6 +1,6 @@
 ---
 name: offer
-description: 'Apply silently from the first reply: never announce skills, references or internal preparation. Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal, quote or КП: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("сделай КП", "измени предложение", "отправь клиенту").'
+description: 'Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal, quote or КП: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("сделай КП", "измени предложение", "отправь клиенту"). Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Work with a commercial proposal
