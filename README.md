@@ -13,7 +13,7 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 
 Connect Quotalogic to your agent first: the plugin has the skills, while the connection gives the agent access to your workspace. In Quotalogic open the workspace settings, find the section about agents, and follow the steps for your app.
 
-The repository is private for now: you need read access to it on GitHub, and git on your computer signed in to GitHub (for example `gh auth login`).
+The repository is private for now. Codex and desktop installation require read access and local git signed in to GitHub (for example `gh auth login`). ChatGPT web asks the importing workspace admin to authorize GitHub in the browser instead.
 
 ## Install in Codex and ChatGPT desktop
 
@@ -30,6 +30,27 @@ Restart ChatGPT desktop or start a new Codex chat after installation.
 Type `$` and select a skill such as `$quotalogic:catalog-import`. On this surface, `@` searches files and previous chats; it does not invoke a skill.
 
 For an import check, make the agent show the column mapping and wait for a separate yes. After the import, ask it to read the created product and compare the stored values with the file. A known backend import bug can store a fractional price one cent lower (`19.99` as `19.98`) while reporting success with no warnings. Use a whole-number test price when checking only the plugin, or verify every fractional price until the backend is fixed.
+
+## Install in ChatGPT web
+
+The current package contains skills only. To read or change Quotalogic data on the web, users also need a separately available and authenticated Quotalogic app with MCP tools.
+
+A workspace admin can import this private GitHub marketplace:
+
+1. Open **Admin → Plugins → Add → Import marketplace**.
+2. Set **Source** to `https://github.com/intergalactic-planb/plugins`, leave **Path** empty, and set **Branch, tag, or commit** to `main`.
+3. Import the marketplace, authorize a GitHub account that can read the repository, and review **Import results**.
+4. Open `Quotalogic` and set its installation policy to **Available** or **Installed** for the required roles. Make the separate Quotalogic MCP app available to the same roles.
+
+Users then open **Plugins**, select their workspace tab, install `Quotalogic` and the Quotalogic MCP app if needed, and start a new Chat or Work conversation. Type `@` and select the plugin or its `catalog-import` skill. On ChatGPT web, `@` invokes plugins and skills; `$` is for Codex.
+
+Test with a whole-number price, require a separate yes after the column mapping, and read the created product back after import. The check is complete only when both the skill and Quotalogic MCP tools are available. A loaded skill with missing tools proves only that the GitHub package was imported.
+
+If **Admin → Plugins** is unavailable, a workspace admin must perform the import. This GitHub marketplace is not a public-directory release and cannot currently be self-installed in an ordinary web account. A **Desktop only** plugin cannot run on the web.
+
+Workspace marketplaces sync daily. Admins can request an immediate update under **Admin → Plugins → Marketplaces → Sync now**; start a new chat afterward. Deleting the marketplace removes every plugin imported from it, but does not disconnect a separately installed MCP app.
+
+See OpenAI's [plugin guide](https://learn.chatgpt.com/docs/plugins) and [GitHub marketplace import guide](https://learn.chatgpt.com/docs/enterprise/plugin-management).
 
 ## Install in Claude Code
 
@@ -58,4 +79,4 @@ Or turn on auto-update in Claude: `/plugin` → **Marketplaces** → `quotalogic
 
 Then ask the agent in your words, for example "make a catalog from this price list", "update the prices in my catalog from this file" or "make and send a proposal for this customer".
 
-The GitHub marketplace is a local/repository distribution channel. It does not publish the plugin to the universal ChatGPT and Codex directory.
+The GitHub marketplace is a repository distribution channel for Codex and managed ChatGPT workspaces. It does not publish the plugin to the universal ChatGPT and Codex directory.
