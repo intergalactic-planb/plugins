@@ -25,7 +25,7 @@ Use role null only when the user asks to remove a role. Do not change a role jus
 
 ## Currency
 
-A money column's currency is a label for its existing amounts. Changing EUR to USD leaves100 as100, without conversion. Say this BEFORE the call. Do not relabel currency to satisfy a request to convert prices. Use only an allowed currency; a refusal supplies the available choices.
+A money column's currency is a label for its existing amounts. Changing EUR to USD leaves 100 as 100, without conversion. Say this BEFORE the call. Do not relabel currency to satisfy a request to convert prices. Use only an allowed currency; a refusal supplies the available choices.
 
 ## Restrictions and partial changes
 

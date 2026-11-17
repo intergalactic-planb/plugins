@@ -10,11 +10,11 @@ For a whole catalog, list_products must visit the root and every section, nested
 
 Use column names exactly as the current get_catalog, list_products or get_product returns them. Duplicate names may be distinguished by a numbered suffix; never guess an id from a name.
 
-- Money and numbers are real values. Supply319.9 for319.90; no storage conversion.
+- Money and numbers are real values. Supply 319.9 for 319.90; no storage conversion.
 - Text can be cleared with null, only when requested. Money and numbers cannot be cleared yet.
 - A list or calculated column cannot be filled or changed with these product tools.
 - Omit unspecified values. Empty, missing and zero are different; never invent a price.
-- A preview contains at most100 products of one catalog. Keep changes to different catalogs separate.
+- A preview contains at most 100 products of one catalog. Keep changes to different catalogs separate.
 
 Preview first, show the actual old→new summary and wait for the user's explicit yes. The code lasts five minutes, is single-use and belongs to this connection and action. A previous request to change prices is not approval of a later preview. A changed request, failed commit or expired code requires a fresh preview and fresh yes.
 
@@ -32,7 +32,7 @@ Only products listed in the user's message are added by hand. Every file, docume
 
 Read the existing columns first. New catalogs already have standard columns, possibly localized. Reuse them instead of creating translations or copies. Use create_field only for a distinct extra column the user explicitly requested.
 
-create_products can add at most100 products per call in one section. It adds without changing existing products. All values are checked before the first creation. Read created, productIds and notCreated; notCreated identifies input indices that did not complete.
+create_products can add at most 100 products per call in one section. It adds without changing existing products. All values are checked before the first creation. Read created, productIds and notCreated; notCreated identifies input indices that did not complete.
 
 A creation can fail after an empty product was made but before its values were saved. Do not blindly repeat the entire call or promise that a failed item left nothing behind. Read the catalog products to establish the actual result and tell the user about partial creation before deciding how to proceed.
 

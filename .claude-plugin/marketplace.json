@@ -8,7 +8,7 @@
     {
       "name": "quotalogic",
       "source": "./",
-      "description": "Skills for Quotalogic catalogs: import a price list into a new catalog or update a catalog from a file."
+      "description": "Skills for Quotalogic: importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals."
     }
   ]
 }
