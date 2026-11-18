@@ -2,7 +2,8 @@
 
 ## Which columns to take (a new catalog)
 
-- Give the columns the names the user wants.
+- Give the columns the names the user wants; otherwise the names of the file, in its language. Never translate them: the examples here are in English only for the example.
+- A cell with several properties goes to several columns, one property each (a split column is named by the property: power, voltage, material, in the language of the file).
 - The columns of a catalog are limited by the tariff (get_connection_info: limits.perCatalog.fields). From a file with many fields take the main ones and show the set before the import. Keep the code or id that finds the products again: the next updates need it.
 - Kinds: money for prices, number for counts (stock), list for links to pictures, text for the rest.
 
@@ -10,7 +11,7 @@
 
 The import gives the standard roles (name, price, code, description, pictures…) by the NAMES of the columns. When several columns fit one role, the import picks one by itself (a name like "id" beats "article"). So:
 
-- name the main price plainly, in the language of the file: "Price";
+- name the main price plainly, in the language of the file ("Price" for an English file);
 - name the other prices without the word "price" in any language: "Wholesale", "Purchase";
 - make only one column look like the code, the name or another role;
 - a price in another currency is the same price: after the import it gets the same name as that price (see below).

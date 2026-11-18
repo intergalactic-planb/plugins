@@ -15,13 +15,14 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 - A new catalog: go to section 2.
 - A catalog that is there: go to section 3.
 - Not clear which catalog: read the list of catalogs and ask the user.
-- A PDF, a page of a site, a text, several files, a messy Excel, or a link: read references/sources.md first.
+- A PDF, a page of a site, a text, several files, a messy Excel, a cell with several properties, or a link: read references/sources.md first.
 
 ## 2. A new catalog
 
 1. Read the file yourself: every sheet, the columns, the first rows, the number of rows.
+   A cell with several properties ("220 V, 1.1 kW, cast iron", "Red / XL / cotton"): split it into columns, one property each, and import the table you made (references/sources.md). A product without one of the properties leaves that cell empty; never guess it.
 2. Call get_connection_info: the currency of the workspace and the limits of the tariff.
-3. Show the user a table: column of the file → column of the catalog → type (text, money, number, list). Name the currency of the catalog; if some products have a price only in another currency, name them and say it goes to a separate column of the same name in that currency (the table shows the final names and currencies). Wait for "yes", even if the user already said "create". A change from the user: show a new table.
+3. Show the user a table: column of the file → column of the catalog → type (text, money, number, list). Column names stay in the language of the file. Name the currency of the catalog; if some products have a price only in another currency, name them and say it goes to a separate column of the same name in that currency (the table shows the final names and currencies). Wait for "yes", even if the user already said "create". A change from the user: show a new table.
    How to name the columns and choose the currency: references/columns.md.
 4. Call import_to_new_catalog. Run the command from its answer; do not ask again.
 5. Call import_status once. Not finished: tell the user the import still runs.
