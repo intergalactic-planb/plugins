@@ -48,7 +48,7 @@ Read [references/products.md](references/products.md) for product values and cre
 
 - New catalog: read get_connection_info for workspace currency and limits. Use the requested currency, otherwise the workspace currency. Call create_catalog, then get_catalog: reuse its localized standard columns; do not add translated copies of Name, Price, Images, Description or Long description.
 - New section: read the catalog and use create_section, with the actual parent section when requested.
-- New column: use create_field only for a distinct additional column the user explicitly requested and the catalog does not already have. Money defaults to the catalog currency. A column's role is separate from its name.
+- New column: use create_field only for a distinct additional column the user explicitly requested and the catalog does not already have. A new money column uses the catalog currency. Check it against supportedCurrencies from get_connection_info. If unavailable, tell the user the column cannot be added. A column's role is separate from its name.
 - New products: read current columns and use create_products for products listed in the message, up to 100 at a time, in the requested section. Never invent names, prices or other values. Leave unspecified values out.
 
 These additions run at once on a clear request; do not ask for an extra yes. Check the returned result and read the created catalog, section, column or products. Name partial failures; do not blindly repeat creation.

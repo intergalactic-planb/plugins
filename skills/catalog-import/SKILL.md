@@ -21,17 +21,17 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 
 1. Read the file yourself: every sheet, the columns, the first rows, the number of rows.
    A cell with several properties ("220 V, 1.1 kW, cast iron", "Red / XL / cotton"): split it into columns, one property each, and import the table you made (references/sources.md). A product without one of the properties leaves that cell empty; never guess it.
-2. Call get_connection_info: the currency of the workspace and the limits of the tariff.
+2. Call get_connection_info for the workspace currency, tariff limits and supportedCurrencies. Check the catalog currency and each new price column before the preview (references/columns.md). Wait for the user to choose a replacement for any unsupported currency. For any mapped price, prepare the XML with field currencies in references/sources.md before the preview, even when the source is an attachment or link.
 3. Show the user a table: column of the file → column of the catalog → type (text, money, number, list). Column names stay in the language of the file. Pictures: a site or a feed with pictures gives their links (all of them, full https addresses, as the page or the file shows them); take them as one column of the kind list, and say in the table how many pictures the products have. The import attaches them to the products when the tariff allows; the answer of the import says if they stay links — then tell the user. Name the currency of the catalog; if some products have a price only in another currency, name them and say it goes to a separate column of the same name in that currency (the table shows the final names and currencies). Report the effect of empty cells before the yes (see "Empty values" below). Wait for "yes", even if the user already said "create". A change from the user: show a new table.
    How to name the columns and choose the currency: references/columns.md.
 4. Call import_to_new_catalog. Run the command from its answer; do not ask again.
-   The requested catalog currency is refused: tell the user, list the available choices from the refusal and ask which currency to use. Wait for their answer before importing. Do not default to the workspace currency. Keep the original amounts and currencies from the source, even if they differ from the rejected currency. Prepare XML when needed (references/columns.md), show the revised table and wait for a separate yes to import. If the currency list is unavailable, explain that the catalog cannot be created now.
+   The requested catalog currency is refused: tell the user, list the available choices from the refusal and ask which currency to use. Wait for their answer before importing. Do not default to the workspace currency. Keep the original amounts and any supported price currencies from the source, even if they differ from the rejected catalog currency. Prepare XML when needed (references/columns.md), show the revised table and wait for a separate yes to import. If the currency list is unavailable, explain that the catalog cannot be created now.
 5. Call import_status once. Not finished: tell the user the import still runs.
 6. After a successful import, call get_catalog and rename temporary price columns to their agreed final names without an extra yes. Verify the names, currencies, product amounts, and roles of the name, main price and code. The main price follows the agreed source price. If a role is missing or wrong, show the current and proposed assignment and wait for a separate yes before changing it (references/columns.md).
 
 ## 3. An update of a catalog
 
-1. Call get_catalog: columns, types, roles. Choose the key column: references/columns.md.
+1. Call get_catalog for columns, types and roles. Choose the key column by references/columns.md. For prices, check supportedCurrencies from get_connection_info and the currency of each destination column (references/columns.md). Prepare the prepared XML before the preview.
 2. Before showing the mapping, use the current catalog columns and choose one source column per target. Leave calculated and inherited targets out and explain why. If two source columns could fill the same target and the request does not decide, ask which one to use and leave the target out until answered. If a needed column is missing, propose its name and type. Call create_field only when the user explicitly requests or agrees to it, then read the catalog again.
 3. Call get_catalog_snapshot with only the columns you need to match and to change.
 4. Match the file with the snapshot by references/matching.md: with a script, not in the chat. A matching key makes candidates, not a final pair. Accept one exact candidate without asking only when no available data contradicts the match and the source key is not repeated. For a supplied XML with sections, propose placing products as in the file. Keep existing sections when the user asks to update only prices, stock or other values, or when you made a flat XML from a PDF. Before preparing the file for section changes, read the section checks in references/sources.md.
@@ -47,9 +47,9 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 ## 4. How the file gets to the service
 
 - You can run commands with network: the command from the answer of the tool (the default).
-- The file is attached to the chat: give it in file.
+- Send prepared XML for price imports in fileText or by the upload command. Other attached files can be passed in file.
 - An XML or CSV you made, or a small file and no network: fileText.
-- A link the user gave: fileUrl.
+- A link to a file without mapped prices: fileUrl.
 
 ## 5. When it fails
 
@@ -64,4 +64,4 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 
 ## Empty values
 
-- Before the yes, show each product and mapped money or number column where an empty CSV cell will become 0. Say which zeros were explicit in the source. To leave a new product price unset, use XML and omit `<price>` (references/sources.md).
+- Before the yes, show each product and mapped money or number column where an empty CSV cell will become 0. Say which zeros were explicit in the source. Leave each missing price out of the prepared XML (references/sources.md).

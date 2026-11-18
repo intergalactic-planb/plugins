@@ -10,7 +10,7 @@
 
 ## Roles
 
-The import gives the standard roles (name, price, code, description, pictures…) by the NAMES of the columns. When several columns fit one role, the import picks one by itself (a name like "id" beats "article"). So:
+Set the agreed roles explicitly in the prepared XML of a new catalog, using references/sources.md. Existing catalogs keep their roles. When the source has several candidates for one role:
 
 - name the main price plainly, in the language of the file ("Price" for an English file);
 - name the other prices without the word "price" in any language: "Wholesale", "Purchase";
@@ -32,16 +32,22 @@ After the import read the columns with get_catalog. If the price, the code or th
 - The user names another one: take it.
 - Before the yes tell the user the currency of the catalog, and when it is not the one of the workspace, both ("the catalog will be in RUB, the workspace is in EUR").
 - Not every currency is allowed. If the requested catalog currency is refused, tell the user, list the choices in the refusal, and ask which to use. Wait for the answer and then show the revised table for a separate yes. Do not choose the workspace currency or start an import while waiting. If the list is unavailable, explain that the catalog cannot be created now.
-- The requested catalog currency can differ from the prices in the source. A chosen catalog currency is technical for amounts outside it. Use `<price>` only for a main price in the chosen catalog currency. Keep every amount in its source currency as below. Never convert or relabel source prices.
+- The requested catalog currency can differ from the prices in the source. A chosen catalog currency is technical for amounts outside it. Use an explicit field definition for the main price, just as for any other price column. Keep amounts and supported source currencies as below. Change an unsupported currency only after the user has chosen its replacement.
+
+## Check currencies before creating a catalog or price column
+
+- Read supportedCurrencies from get_connection_info. Use this list for the new catalog and every new price column, including columns from native exports. Compare the source currencies after normalizing aliases such as RUR to RUB, BYB or BYR to BYN, and RMB to CNY.
+- If a new price column has an unsupported currency, name the column and its source currency. Ask which supported currency to use and say that the numbers in the column will stay the same. Wait for the choice before starting the import or creating the column. Do not assume the catalog or workspace currency is the choice. If the list is empty, tell the user the service has no configured currencies and wait.
+- After the choice prepare the XML with the agreed currency in the field definition. Keep the numbers unchanged. Show the affected columns, source and replacement currencies, and the same amounts. Wait for a separate yes before writing.
+- Do not look up currency pairs or recalculate amounts for this replacement.
+- When adding a money column by hand in an existing catalog, its initial currency is the catalog currency. If the catalog currency is unavailable, explain that the column cannot be added this way and wait.
 
 ## The currency of a money column
 
-- Excel and XML: a money column gets its currency from the file (the format of the cell, the attribute of the price).
-- When you make XML and a source price is outside the catalog currency, including a source currency refused for the catalog, keep it in its own money column of its currency. Never drop, convert or relabel the value; omit the param only when that product has no such price.
-- Such a column is the same price in another currency, so in the catalog it has the same name as that price: "Price" in RUB and "Price" in USD, "Wholesale" in RUB and "Wholesale" in USD. Names stay in the language of the file. The currency next to the name tells them apart; do not write the currency into the name. A different kind of price (wholesale, purchase, recommended) keeps its own name in every currency. If it is not clear which price a source amount is, ask before the yes.
-- Use the source main price and its primary currency as agreed with the user. If the price kind or primary currency is unclear, ask before the yes. For each price kind, the column in its primary source currency keeps its plain name, for example `<param name="Price" unit="RUB">8490</param>` when the catalog is in EUR. The main price role follows the agreed source price even when the catalog uses a technical currency.
-- Native XML import joins columns of one name. Use a temporary name only for an additional currency of the same price kind: `<param name="Price USD" unit="USD">95</param>`, mapped as `Price USD → Price USD → money`. After the import read get_catalog, rename the temporary columns to their agreed final names, and check both currencies and product amounts. That rename needs no extra yes. If any role is wrong or missing, ask separately and wait for a yes to fix it.
+- Read the source currency from its header, cell format, or XML markers. Ask if it is unclear. Prepare XML with the chosen currency in the definition of each money field (references/sources.md). Use a separate field for each kind of price and currency. Put numbers in the offers and leave out missing prices.
+- Keep names in the language of the file. A price in another currency can have the same final name, for example "Price" in EUR and "Price" in CHF. A different kind of price keeps its own name, for example "Wholesale". If the price kind or main currency is unclear, ask before the yes.
+- Keep the plain name for the main source currency of a price kind. Give an additional currency of that same price a temporary distinct name, for example "Price CHF". Use a separate field ID and an explicit currency. After success rename it to the final name agreed in the preview, then check the amounts and currencies. Ask separately before correcting a role.
 - When two columns have one name, the tools show them with the currency: "Price (RUB)", "Price (USD)" (a column in the catalog currency keeps the plain name). Use these labels in the tools; the real name is "Price". To the user say "Price" in USD, never "Price (USD)" or "Price USD", and do not rename again.
 - Before the yes the table shows the final names and currencies, not the temporary name: "Price" — RUB, "Price" — USD. Tell the user plainly which products have a price only in another currency and where it goes: "all prices are in rubles; these products have a price only in dollars, so it is in a separate column 'Price' in USD".
 - An update: such a price goes into the column of the same name in its currency (other tools show it as "Price (USD)"). The catalog has none: add it before the import (create_field, then update_catalog for its currency and name) after the user's yes.
-- CSV: it can not. If such a column is clearly in another currency, tell the user it will be in the currency of the catalog and ask what to do.
+- Import prices from CSV, Excel, XML, attachments or links through prepared XML. A price update must use the same currency as its destination column. If they differ, resolve the destination or the replacement with the user before the preview.

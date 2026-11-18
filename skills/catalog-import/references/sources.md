@@ -1,6 +1,6 @@
 # Hard sources: a PDF, a site, a text, a messy Excel, several files
 
-The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, including existing YML feeds). A PDF always becomes one native XML `<export>`, both with and without sections. For a site, text, messy Excel or several files, make one CSV, or the same XML when sections must be kept. Many products for a new catalog always go through one file and one import, never by create_catalog, create_field and create_products one by one.
+The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, including existing YML feeds). Prepare one XML file for a PDF, any mapped price, or sections the user wants to keep. Other flat sources can use CSV. Many products for a new catalog always go through one file and one import, never by create_catalog, create_field and create_products one by one.
 
 ## Read the source
 
@@ -15,14 +15,14 @@ The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, incl
 
 - The name exactly as written, letter by letter: do not change mixed Latin and Cyrillic letters, spaces or dashes.
 - The price is the number only, with a dot (12,50 → 12.50). Never make it up.
-- Ask which currency to use for the catalog if the choice is unclear. If the requested currency is refused, list the available choices from the refusal and wait for the user to pick one. Show the revised table and wait for a separate yes before importing. Keep every price in its source currency; never drop, convert or relabel one.
+- Ask which currency to use for the catalog if the choice is unclear. If the requested currency is refused, list the available choices from the refusal and wait for the user to pick one. Show the revised table and wait for a separate yes before importing. Keep every amount and its supported source currency. For an unsupported price column currency, follow references/columns.md before preparing the preview.
 - The characteristics that most products have are columns of the kind text (a size, a material, a weight…); the ones of one product go into the description.
 - Pictures: a site gives them — a column of the kind list with the full addresses of the pictures of the product (https://…, as the page shows them, not made up); several in one cell are separated by ; (put such a cell in double quotes). A PDF gives none.
 - Never add a column that no source has.
 
-## A PDF: always XML
+## Prepared XML for prices
 
-A PDF always becomes one XML file with the declaration and an `<export>` root. After the required `<name>`, a flat PDF has only `<offers>`. A PDF with sections (categories, chapters, titles of groups) also has `<categories>` and the offers have `<categoryId>`:
+Use UTF-8 and put the XML declaration at the start. Use the chosen catalog currency in the import request and the currency of each money column on its own field. The example has an EUR catalog with an EUR main price and a separate CHF column.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -32,28 +32,34 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
     <category id="1">Gates</category>
     <category id="2" parentId="1">Sliding</category>
   </categories>
+  <fields>
+    <field id="col-name" name="Name" type="string"/>
+    <field id="col-sku" name="SKU" type="string"/>
+    <field id="col-price" name="Price" type="money" currencyId="EUR"/>
+    <field id="col-wholesale" name="Wholesale" type="money" currencyId="CHF"/>
+  </fields>
+  <tags>
+    <tag id="col-name">name</tag>
+    <tag id="col-sku">vendorCode</tag>
+    <tag id="col-price">price</tag>
+  </tags>
   <offers>
     <offer id="G-100">
-      <vendorCode>G-100</vendorCode>
-      <name>Sliding gate 4 m</name>
-      <price>1250.00</price>
-      <currencyId>EUR</currencyId>
-      <param name="Price USD" unit="USD">95</param>
       <categoryId>2</categoryId>
-      <param name="Power">400 W</param>
+      <param name="col-name">Sliding gate 4 m</param>
+      <param name="col-sku">G-100</param>
+      <param name="col-price">1250.00</param>
+      <param name="col-wholesale">125.50</param>
     </offer>
   </offers>
 </export>
 ```
 
-- `<name>` with the catalog name must be the first child of `<export>`. For an update, use the current catalog name.
-- A flat PDF omits the whole `<categories>` block and every `<categoryId>`.
-- An `<offer>` is a product: `<name>`, `<price>` (a number), `<currencyId>` (the currency of the catalog), `<categoryId>` (no tag — the root), `<vendorCode>` if the source has a code, `<description>`, and a `<param name="…">` for each characteristic. For a site, add one `<picture>` for each picture address; a PDF gives none.
-- Use `<price>` only for the main price in the catalog currency. Pass other prices as money params in their original currency. The primary source currency of each price kind uses its plain name, for example `<param name="Price" unit="RUB">8490</param>` when the catalog is in EUR. Only another currency of that same price uses a temporary name, for example `<param name="Price USD" unit="USD">95</param>`. Map each param as money and rename temporary columns after the import to the agreed names (references/columns.md). Omit an absent price rather than sending zero. Never drop, convert or relabel an amount.
-- No price ("on request", empty): omit `<price>` completely. Never write an empty `<price></price>` or `<price/>`: the import turns it into price 0.
-- The ids of categories are numbers; every `<categoryId>` must be a listed `<category>`.
-- Write & as &amp; and < as &lt;.
-- In the mapping the column is the tag (name, price, vendorCode, description, picture) or the name of the param.
+- Put the catalog name first. For an update use the current catalog name and omit `<tags>` so existing roles are kept.
+- Define every mapped column before the offers. Use a distinct ID starting with `col-` followed by lowercase letters, digits or hyphens. Use the ID as the source in the mapping. Types in the XML are string, money, number and list. For a new catalog, add tags for the agreed roles of the name, main price, code and image fields when present.
+- Write currency codes only on the money field definitions. Write only decimal amounts in the price params. Omit each missing price param.
+- For pictures, use a list field and one param with the complete link per picture. A PDF gives no pictures. Escape XML characters in names and values.
+- A flat file omits the categories and category IDs. With sections, use numeric category IDs and reference only listed categories in the offers.
 
 ## Section changes in an existing catalog
 
@@ -71,6 +77,6 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
 
 ## A link from the user
 
-- A link to a file: download it and read it as a file first (its columns, first rows), then give the link in fileUrl. The service downloads it itself and checks that it is a file of the kind you read.
-- A link to a page or a site is not a file: read the pages, make a CSV (or XML for sections) and give it in fileText.
+- A link to a file: download and read it first. For price imports, send the prepared XML in fileText or by the upload command. Pass links directly only for files with no mapped price columns.
+- A link to a page or a site is not a file: read the pages, make XML for prices or sections, or CSV for other flat data and give it in fileText.
 - You can not download it (no network): ask the user to attach the file.
