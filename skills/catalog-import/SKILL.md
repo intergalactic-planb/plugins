@@ -1,6 +1,6 @@
 ---
 name: catalog-import
-description: Import products into a catalog from a file. A new catalog from Excel, CSV, XML, PDF, a site or a link, or an update of a catalog that is there (prices, stock, new products, sections). Use when the user gives a price list or a file of a supplier and wants it in a catalog ("import this price list", "make a catalog from this file", "update the prices from this file", "загрузи прайс").
+description: Import products into a catalog from a file. A new catalog from Excel, CSV, XML, PDF, a site or a link, or an update of a catalog that is there (prices, stock, new products, sections). Use when the user gives a price list or a file of a supplier and wants it in a catalog ("import this price list", "make a catalog from this file", "update the prices from this file", "upload the price list").
 ---
 
 # Import a file into a catalog

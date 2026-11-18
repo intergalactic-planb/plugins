@@ -1,6 +1,6 @@
 ---
 name: currency-conversion
-description: 'Show a catalog price in another currency, add a calculated currency column, use the effective bank rate, set a custom rate, or return to the bank rate ("покажи цены в евро", "пересчитай USD в EUR", "установи свой курс"). Relabeling a money column without conversion belongs to catalog-edit instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
+description: 'Show a catalog price in another currency, add a calculated currency column, use the effective bank rate, set a custom rate, or return to the bank rate ("show the prices in euros", "convert USD to EUR", "set my own rate"). Relabeling a money column without conversion belongs to catalog-edit instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Convert catalog prices to another currency

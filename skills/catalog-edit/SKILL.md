@@ -1,6 +1,6 @@
 ---
 name: catalog-edit
-description: 'Edit a catalog by hand: change product prices or values, move products, rename a catalog, section or column, set column roles or currency, add a section, column or a few listed products, or create an empty catalog ("поменяй цены", "переименуй колонку", "перенеси товары", "добавь раздел"). A file, supplier price list, document or link goes through catalog-import instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
+description: 'Edit a catalog by hand: change product prices or values, move products, rename a catalog, section or column, set column roles or currency, add a section, column or a few listed products, or create an empty catalog ("change the prices", "rename the column", "move the products", "add a section"). A file, supplier price list, document or link goes through catalog-import instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Edit a catalog by hand

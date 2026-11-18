@@ -10,8 +10,8 @@
 
 The import gives the standard roles (name, price, code, description, pictures…) by the NAMES of the columns. When several columns fit one role, the import picks one by itself (a name like "id" beats "article"). So:
 
-- name the main price plainly: "Price", "Цена";
-- name the other prices without the word price or цена: "Wholesale", "Опт", "Закупка";
+- name the main price plainly, in the language of the file: "Price";
+- name the other prices without the word "price" in any language: "Wholesale", "Purchase";
 - make only one column look like the code, the name or another role;
 - a price in another currency is the same price: after the import it gets the same name as that price (see below).
 
@@ -25,7 +25,7 @@ After the import read the columns with get_catalog. If the price, the code or th
 
 ## The currency of a new catalog
 
-- The file clearly states one currency (руб, ₽, RUB, €, $… at the prices or in the header): give it as "currency".
+- The file clearly states one currency (₽, RUB, €, $, a currency word… at the prices or in the header): give it as "currency".
 - It states none: the currency of the workspace (get_connection_info, read it always).
 - Several currencies, or a doubt (the prices look like another currency): ask which one is the currency of the catalog.
 - The user names another one: take it.
@@ -37,10 +37,10 @@ After the import read the columns with get_catalog. If the price, the code or th
 
 - Excel and XML: a money column gets its currency from the file (the format of the cell, the attribute of the price).
 - When you make XML and a source price is outside the catalog currency, including a source currency refused for the catalog, keep it in its own money column of its currency. Never drop, convert or relabel the value; omit the param only when that product has no such price.
-- Such a column is the same price in another currency, so in the catalog it has the same name as that price: "Цена" in RUB and "Цена" in USD, "Оптовая" in RUB and "Оптовая" in USD. The currency next to the name tells them apart; do not write the currency into the name. A different kind of price (wholesale, purchase, recommended) keeps its own name in every currency. If it is not clear which price a source amount is, ask before the yes.
-- The main currency is the one most prices of the file are in, even when the catalog has another, technical currency (a refused one). Its column keeps the plain name and the role: `<param name="Цена" unit="RUB">8490</param>` (or `<price>` when it is the catalog currency).
-- The import joins columns of one name into one column, so only the other currency gets a temporary name, the price name and the currency: `<param name="Цена USD" unit="USD">95</param>`, mapped as `Цена USD → Цена USD → money`. After the import read get_catalog: the role stays on the column in the main currency (fix it with update_catalog if not), then rename the temporary column to the name of its price with update_catalog. This rename is a setting: it needs no extra yes. Read get_catalog again and check both currencies.
-- When two columns have one name, the tools show them with the currency: "Цена (RUB)", "Цена (USD)" (a column in the catalog currency keeps the plain name). Use these labels in the tools; the real name is "Цена". To the user say «Цена» in USD, never «Цена (USD)» or «Цена USD», and do not rename again.
-- Before the yes the table shows the final names and currencies, not the temporary name: «Цена» — RUB, «Цена» — USD. Tell the user plainly which products have a price only in another currency and where it goes: "all prices are in rubles; these products have a price only in dollars, so it is in a separate column «Цена» in USD".
-- An update: such a price goes into the column of the same name in its currency (other tools show it as "Цена (USD)"). The catalog has none: add it before the import (create_field, then update_catalog for its currency and name) after the user's yes.
+- Such a column is the same price in another currency, so in the catalog it has the same name as that price: "Price" in RUB and "Price" in USD, "Wholesale" in RUB and "Wholesale" in USD. Names stay in the language of the file. The currency next to the name tells them apart; do not write the currency into the name. A different kind of price (wholesale, purchase, recommended) keeps its own name in every currency. If it is not clear which price a source amount is, ask before the yes.
+- The main currency is the one most prices of the file are in, even when the catalog has another, technical currency (a refused one). Its column keeps the plain name and the role: `<param name="Price" unit="RUB">8490</param>` (or `<price>` when it is the catalog currency).
+- The import joins columns of one name into one column, so only the other currency gets a temporary name, the price name and the currency: `<param name="Price USD" unit="USD">95</param>`, mapped as `Price USD → Price USD → money`. After the import read get_catalog: the role stays on the column in the main currency (fix it with update_catalog if not), then rename the temporary column to the name of its price with update_catalog. This rename is a setting: it needs no extra yes. Read get_catalog again and check both currencies.
+- When two columns have one name, the tools show them with the currency: "Price (RUB)", "Price (USD)" (a column in the catalog currency keeps the plain name). Use these labels in the tools; the real name is "Price". To the user say "Price" in USD, never "Price (USD)" or "Price USD", and do not rename again.
+- Before the yes the table shows the final names and currencies, not the temporary name: "Price" — RUB, "Price" — USD. Tell the user plainly which products have a price only in another currency and where it goes: "all prices are in rubles; these products have a price only in dollars, so it is in a separate column 'Price' in USD".
+- An update: such a price goes into the column of the same name in its currency (other tools show it as "Price (USD)"). The catalog has none: add it before the import (create_field, then update_catalog for its currency and name) after the user's yes.
 - CSV: it can not. If such a column is clearly in another currency, tell the user it will be in the currency of the catalog and ask what to do.

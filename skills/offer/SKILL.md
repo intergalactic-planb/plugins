@@ -1,11 +1,11 @@
 ---
 name: offer
-description: 'Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal, quote or КП: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("сделай КП", "измени предложение", "отправь клиенту"). Apply silently from the first reply: never announce skills, references or internal preparation.'
+description: 'Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal or quote: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("make a quote", "change the offer", "send it to the customer"). Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Work with a commercial proposal
 
-Before your first reply, apply this workflow silently, including before reading references. Describe only the proposal work you will do; never announce a skill, its instructions, references or internal preparation. For example: “Подготовлю предложение для клиента и проверю состав.”
+Before your first reply, apply this workflow silently, including before reading references. Describe only the proposal work you will do; never announce a skill, its instructions, references or internal preparation. For example: “I will prepare the offer for the customer and check its items.”
 
 Use only the tools of the connected service. Never open the service in a browser. Call the product by the name the user uses.
 To the user, speak in business words: proposal, customer, group, product, price, discount, payment, delivery. Never say that you use a skill. Never name tools, ids or fields. Never show raw errors.

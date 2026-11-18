@@ -38,7 +38,7 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
       <name>Sliding gate 4 m</name>
       <price>1250.00</price>
       <currencyId>EUR</currencyId>
-      <param name="Цена USD" unit="USD">95</param>
+      <param name="Price USD" unit="USD">95</param>
       <categoryId>2</categoryId>
       <param name="Power">400 W</param>
     </offer>
@@ -49,7 +49,7 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
 - `<name>` with the catalog name must be the first child of `<export>`. For an update, use the current catalog name.
 - A flat PDF omits the whole `<categories>` block and every `<categoryId>`.
 - An `<offer>` is a product: `<name>`, `<price>` (a number), `<currencyId>` (the currency of the catalog), `<categoryId>` (no tag — the root), `<vendorCode>` if the source has a code, `<description>`, and a `<param name="…">` for each characteristic. For a site, add one `<picture>` for each picture address; a PDF gives none.
-- `<price>` with `<currencyId>` is the main price in the currency of the catalog. A source price outside that currency, including a source currency refused for the catalog, is its own money column under a temporary name, the name of its price and the currency: `<param name="Цена USD" unit="USD">95</param>`. Add `Цена USD → Цена USD → money` to the mapping. After the import rename it to the name of its price (references/columns.md, the currency of a money column). If a product has no source price in the catalog currency, omit `<price>`. Omit the param only when that product has no such source price. Never put the number into the main price, drop it, convert it or relabel it.
+- `<price>` with `<currencyId>` is the main price in the currency of the catalog. A source price outside that currency, including a source currency refused for the catalog, is its own money column under a temporary name, the name of its price and the currency: `<param name="Price USD" unit="USD">95</param>`. Add `Price USD → Price USD → money` to the mapping. After the import rename it to the name of its price (references/columns.md, the currency of a money column). If a product has no source price in the catalog currency, omit `<price>`. Omit the param only when that product has no such source price. Never put the number into the main price, drop it, convert it or relabel it.
 - No price ("on request", empty): omit `<price>` completely. Never write an empty `<price></price>` or `<price/>`: the import turns it into price 0.
 - The ids of categories are numbers; every `<categoryId>` must be a listed `<category>`.
 - Write & as &amp; and < as &lt;.
