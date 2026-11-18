@@ -55,6 +55,13 @@ A PDF always becomes one XML file with the declaration and an `<export>` root. A
 - Write & as &amp; and < as &lt;.
 - In the mapping the column is the tag (name, price, vendorCode, description, picture) or the name of the param.
 
+## Section changes in an existing catalog
+
+- Compare the full paths from the file with the catalog before preparing XML. Use exact section names under the same parent, as in the snapshot (for example, "Gates / Sliding"). Check differences in spelling, spaces and case so they do not create a second section by mistake.
+- Keep: existing products stay in their sections. Move: a product leaves all its previous sections and goes to its section from the file, or to the root if none is given. Missing sections are created. Add: products keep their previous sections and can gain a section that already exists.
+- In add mode the import skips assignments to missing sections and applies the other changes. Show the missing full paths and affected products in the preview summary. Count only memberships being added to existing sections. If the user explicitly asks to create missing sections, do so and prepare a fresh preview.
+- Before asking for approval, show the affected products, where they are going, how many change sections, which paths would be created and which products would move to the root. State which memberships are lost or kept. The preview needs the count and the missing paths for a move or add.
+
 ## Then
 
 1. From then on work only with the XML or CSV you made, do not read the source again.

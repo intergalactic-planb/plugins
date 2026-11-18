@@ -34,14 +34,14 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 1. Call get_catalog: columns, types, roles. Choose the key column: references/columns.md.
 2. The file has a column that the catalog has not, and the user wants it: make it first with create_field.
 3. Call get_catalog_snapshot with only the columns you need to match and to change.
-4. Match the file with the snapshot by references/matching.md: with a script, not in the chat. A matching key makes candidates, not a final pair; compare the other available data before accepting one.
+4. Match the file with the snapshot by references/matching.md: with a script, not in the chat. A matching key makes candidates, not a final pair; compare the other available data before accepting one. For a supplied XML with sections, propose placing products as in the file. Keep existing sections when the user asks to update only prices, stock or other values, or when you made a flat XML from a PDF. Before preparing the file for section changes, read the section checks in references/sources.md.
 5. Tell the user what you found: which products change and from what to what, exact pairs, doubtful pairs, new rows, skipped rows, problems of the file. Give the user the CSV of the pairs. List every row used for several products and every key repeated in the file; say what differs or which row you chose, and whether the user confirmed it. Ask about every unconfirmed choice and leave its products out until the user answers.
 6. Call preview_import with matchReport. If its answer has "next", do it before anything else.
 7. Tell the user the summary, and that it cannot be undone. Wait for a clear "yes".
 8. Call commit_import with the code. Run the command. Call import_status once. After success, call get_catalog_snapshot with the key and the changed columns and check every affected row against the summary. Tell the user about any difference; do not try to correct it without a new preview and yes.
 
-- New rows are added only after the user said yes to "N rows are new, add them?" (addNew), and only if they fit the limit of products of the tariff.
-- Sections change only from XML, and only the way the user chose: keep, move (the products go to their sections of the file) or add (they get one more section and keep the old ones).
+- Before asking whether to add new rows, say where each will go. If keeping sections, new products go to the root. If moving them as in the file, use their file section or the root if they have none. If adding memberships, name the existing sections they will join and any assignments that will be skipped. Add new rows only after the user says yes to adding them and only if they fit the tariff limit. Then show the final preview and ask for a yes to it.
+- Sections change only from XML in the way shown in the approved preview. Moving removes all previous memberships. Adding memberships keeps the old ones and skips assignments to missing sections. Before the yes, name the skipped paths and the affected products.
 - Apply a file always with the import, even when few products change.
 
 ## 4. How the file gets to the service
