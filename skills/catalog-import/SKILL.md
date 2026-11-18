@@ -59,4 +59,4 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 
 - Never change data without a clear "yes" of the user to the summary.
 - Never multiply or divide prices: the tools give real amounts.
-- Never make up a value. An empty cell stays empty.
+- Never make up a value. An empty text cell stays empty. An empty money or number cell of a CSV becomes 0 in the catalog: tell the user "0", never "empty". To keep a price empty, make XML and omit `<price>` (references/sources.md).
