@@ -21,9 +21,8 @@ After the import read the columns with get_catalog. If the price, the code or th
 
 ## The key of an update
 
-- The key is the column with the role vendorCode.
-- The file has no such column: take the column with the role name, do not ask the user. Then say in the summary that the products are found by the exact name: rows whose name is written differently, or fits several products, are skipped.
-- No column of the catalog has unique values: see references/matching.md.
+- Start with the column with the vendorCode role. If the file has no such column, try the column with the name role and tell the user the match is by exact name.
+- Before writing, verify that the actual catalog key reaches only the approved products. If an article or name is shared by several products and only one is approved, use an existing unique catalog key for that product. If no such key is usable, leave the row out and report why. See references/matching.md.
 
 ## The currency of a new catalog
 
