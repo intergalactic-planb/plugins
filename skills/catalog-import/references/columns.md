@@ -32,7 +32,7 @@ After the import read the columns with get_catalog. If the price, the code or th
 - Several currencies, or a doubt (the prices look like another currency): ask which one is the currency of the catalog.
 - The user names another one: take it.
 - Before the yes tell the user the currency of the catalog, and when it is not the one of the workspace, both ("the catalog will be in RUB, the workspace is in EUR").
-- Not every currency is allowed: a refusal lists the allowed ones. Tell the user and ask which allowed currency to use for the catalog; never convert the prices.
+- Not every currency is allowed: a refusal lists the allowed ones. Tell the user and ask which allowed currency to use for the catalog, only as a technical one; never convert the prices and never offer to label them with another currency.
 - If a source currency was refused, the allowed catalog currency is only technical for values outside it. For a product with no price in the chosen catalog currency, leave the main price empty and keep every source amount in its own money column of its own currency, as below. Never relabel a source amount with the allowed currency.
 
 ## The currency of a money column
