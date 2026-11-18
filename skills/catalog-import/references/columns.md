@@ -6,7 +6,7 @@
 - A cell with several properties goes to several columns, one property each (a split column is named by the property: power, voltage, material, in the language of the file).
 - The columns of a catalog are limited by the tariff (get_connection_info: limits.perCatalog.fields). From a file with many fields take the main ones and show the set before the import. Keep the code or id that finds the products again: the next updates need it.
 - Kinds: money for prices, number for counts (stock), list for links to pictures, text for the rest.
-- An empty money or number cell of a CSV becomes 0 after the import. Before the yes say so for those products ("the price will be 0"); never promise an empty price. Only XML without `<price>` keeps it empty.
+- A blank cell in a mapped money or number column of a CSV becomes 0. Before the yes, name the products and columns and explain which zeros come from empty cells and which were explicit in the file. If the price of a new product must remain unset, use XML and omit `<price>`.
 
 ## Roles
 
