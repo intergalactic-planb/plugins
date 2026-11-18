@@ -21,11 +21,11 @@ The answers of the tools have the exact rules ("next", "guide", a refusal with a
 
 1. Read the file yourself: every sheet, the columns, the first rows, the number of rows.
 2. Call get_connection_info: the currency of the workspace and the limits of the tariff.
-3. Show the user a table: column of the file → column of the catalog → type (text, money, number, list). Name the currency of the catalog. Wait for "yes", even if the user already said "create". A change from the user: show a new table.
+3. Show the user a table: column of the file → column of the catalog → type (text, money, number, list). Name the currency of the catalog; if some products have a price only in another currency, name them and say it goes to a separate column of the same name in that currency (the table shows the final names and currencies). Wait for "yes", even if the user already said "create". A change from the user: show a new table.
    How to name the columns and choose the currency: references/columns.md.
 4. Call import_to_new_catalog. Run the command from its answer; do not ask again.
 5. Call import_status once. Not finished: tell the user the import still runs.
-6. Call get_catalog and check the roles of the name, the price and the code. A role is missing or on a wrong column: tell the user; after "yes", fix it with update_catalog.
+6. Call get_catalog and check the roles of the name, the price and the code. A role is missing or on a wrong column: tell the user; after "yes", fix it with update_catalog. A price column in another currency under a temporary name: rename it to the name of its price (references/columns.md).
 
 ## 3. An update of a catalog
 

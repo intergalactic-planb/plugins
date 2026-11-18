@@ -6,7 +6,7 @@ Use get_catalog immediately before preparing settings changes. update_catalog ac
 
 - Catalog: name, short description and full description. An empty description clears it; never send an empty value unless the user asks to clear it. Catalog currency is not editable here.
 - Section: its name, using its id from this catalog. The root is the catalog itself; rename it through the catalog's name.
-- Column: its name throughout the catalog, currency for a money column, and role. Two columns cannot have the same name. Renaming changes neither type nor values.
+- Column: its name throughout the catalog, currency for a money column, and role. Two columns can have the same name only if both are money columns in different currencies (the same price in another currency); other tools show such a column as "Price (USD)". Renaming changes neither type nor values.
 
 ## Roles
 
