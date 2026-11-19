@@ -25,7 +25,7 @@ Read list_catalogs and use the catalog the user named. Ask only when the catalog
 Read [references/catalog-settings.md](references/catalog-settings.md) before changing settings.
 
 1. Explain the requested change. Before assigning a role, say which column loses that role and which old role the target loses. Before changing a column's currency, say that amounts stay the same and are not converted.
-2. A clear request is enough for update_catalog; no extra confirmation is needed for these settings. Set only the requested properties.
+2. A clear request is enough for update_catalog; no extra confirmation is needed for these settings. Send only requested fields. Use an empty description or null role only when explicitly asked to clear it.
 3. Read the result: summary, done, notDone and released. Tell the user both what changed and what did not. Never retry an entire partially completed request.
 4. Read get_catalog again and verify names, currencies and roles. Report a mismatch instead of silently claiming success.
 
@@ -38,7 +38,7 @@ Read [references/products.md](references/products.md) before changing products.
 1. Find each product with find_products and check its exact name or article and catalog. Read get_product when the search does not supply the requested values or current sections. Ask about ambiguous matches; never select a different catalog because the article matches.
 2. Use the current column names from get_catalog and real amounts. All products in one preview must belong to one catalog.
 3. For a move, read the actual current sections. Create a requested missing destination with create_section first. A move removes the product from ALL its current sections and leaves only the destination; explain this before confirmation.
-4. Call preview_update_products with only requested values or moves. Show its actual summary: catalog, products, old and new values or sections, currency and the effect of a move. Say that the change cannot be undone. Wait for a clear yes to this preview, even if the original request said to change the products.
+4. Call preview_update_products with only requested values or moves. Use null only to clear text on request. For money or numbers, send 0 only when requested, never an empty string. Show its actual summary: catalog, products, old and new values or sections, currency and the effect of a move. Say that the change cannot be undone. Wait for a clear yes to this preview, even if the original request said to change the products.
 5. Only after that yes call commit_update_products with the preview's code. Before the call briefly repeat what will change. A changed request, expired code or failed commit requires a new preview and a new yes; never reuse a code or invent confirmation.
 6. Check updated, moved and notUpdated. A move-only success can have updated zero and moved greater than zero. Read every affected product again; compare values and exact sections with the confirmed changes. Report any failure or mismatch; a correction requires its own preview and yes.
 

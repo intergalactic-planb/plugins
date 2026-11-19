@@ -11,7 +11,7 @@ For a whole catalog, list_products must visit the root and every section, nested
 Use column names exactly as the current get_catalog, list_products or get_product returns them. Duplicate names may be distinguished by a numbered suffix; never guess an id from a name.
 
 - Money and numbers are real values. Supply 319.9 for 319.90; no storage conversion.
-- Text can be cleared with null, only when requested. Money and numbers cannot be cleared yet.
+- Text can be cleared with null, only when requested. Money and numbers cannot be cleared. To set a value to zero on request, send 0. An empty string can also write zero, so leave unrequested values out.
 - A list or calculated column cannot be filled or changed with these product tools.
 - Omit unspecified values. Empty, missing and zero are different; never invent a price.
 - A preview contains at most 100 products of one catalog. Keep changes to different catalogs separate.

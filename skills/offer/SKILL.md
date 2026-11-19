@@ -40,7 +40,7 @@ If several proposals or products fit, show their business names and ask which on
 3. Read the relevant reference:
    - groups, options, products and pictures: references/groups-and-products.md;
    - price, count, discount or markup: references/prices.md.
-4. Call update_offer once with the requested changes. An empty string clears a text field; do not send it unless the user asked to clear that field.
+4. Call update_offer once with only the requested fields. Use an empty string only to clear a supported text field on request. The proposal itself needs a nonempty name.
 5. Check the returned proposal: the changed values, groups, total, products not added and pictures not added.
 6. If the proposal was published before, say that the customer still sees the previous published version until the proposal is published again.
 
