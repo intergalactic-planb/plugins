@@ -1,6 +1,6 @@
 # Hard sources: a PDF, a site, a text, a messy Excel, several files
 
-The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, including existing YML feeds). Prepare one XML file for a PDF, any mapped price, or sections the user wants to keep. Other flat sources can use CSV. Many products for a new catalog always go through one file and one import, never by create_catalog, create_field and create_products one by one.
+The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, including existing YML feeds). Prepare one XML file for a PDF, any mapped price, or sections from a source you need to reshape. Other flat sources can use CSV. Many products for a new catalog always go through one file and one import, never by create_catalog, create_field and create_products one by one.
 
 ## Read the source
 
@@ -8,7 +8,8 @@ The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, incl
 - A PDF of up to 10 pages: read the whole file at once, without a range of pages: a range of pages needs a program that may be missing. A longer PDF: read it in ranges of up to 10 pages; if that fails, ask the user to paste the text or send an Excel file.
 - A site whose products appear only after the page runs its scripts (the HTML has no products): open it in the browser and go through every category and product page. No browser: say so and ask for a browser, an export of the products or their text. Never guess addresses of the site.
 - Take only the products. Leave out the header of the document, the titles of sections (they become sections), the totals, notes like "with VAT".
-- An Excel file that the import would read wrong (titles of sections in the rows, merged cells, empty columns, several properties in one cell): read every sheet yourself and make one table.
+- For an original Excel update with sections, read the selected sheets and the data range yourself. Give the same selection for matching and the preview. Set `excel.sheets` to `first` (the default), `all`, or `exceptFirst`. For explicit bounds give inclusive, one-based `excel.range` and omit its last row to read to the end.
+- The importer uses the keys and rows in the workbook. If the selected sheets and range still contain excluded rows or keys that need correction, prepare a filtered workbook with its layout or prepare XML with the agreed paths and keys. Prepare XML for mapped prices. Use a fresh preview after any change.
 - Several files with a common identifier (a price list and a list of descriptions): read every file, join them by the identifier, one row a product.
 
 ## One product at a time
@@ -64,13 +65,14 @@ Use UTF-8 and put the XML declaration at the start. Use the chosen catalog curre
 ## Section changes in an existing catalog
 
 - Compare the full paths from the file with the catalog before preparing XML. Use exact section names under the same parent, as in the snapshot (for example, "Gates / Sliding"). Check differences in spelling, spaces and case so they do not create a second section by mistake.
-- Keep: existing products stay in their sections. Move: a product leaves all its previous sections and goes to its section from the file, or to the root if none is given. Missing sections are created. Add: products keep their previous sections and can gain a section that already exists.
+- Keep keeps the existing sections. Plain is only for an explicit request to import XML or Excel without sections. Imported products go to the root and lose all previous memberships. Give an empty list of new paths. Move for XML or sheets for original Excel replace the old memberships with the confirmed paths. Products without a section go to the root. Add for XML can add a membership to a section that exists.
 - In add mode the import skips assignments to missing sections and applies the other changes. Show the missing full paths and affected products in the preview summary. Count each product gaining an existing section once. If the user explicitly asks to create missing sections, do so and prepare a fresh preview.
-- Before asking for approval, show the affected products, where they are going, how many change sections, which paths would be created and which products would move to the root. State which memberships are lost or kept. The preview needs the count and the missing paths for a move or add.
+- When Import reads tables from several selected Excel sheets, their names are top-level sections. When it reads one such sheet, use an existing top-level section with that name if present. Otherwise start at the root. The importer can use recognised merged headings and row outline levels for subsections. Show the interpreted paths. When the import only updates existing products and a target path is missing, ask whether to create the section separately or leave the affected rows out of the section import. After a decision, take a fresh snapshot and preview. Add products only if the user separately agreed to that.
+- Before approval show the selected Excel sheets and range, affected products, section changes, new paths, skipped assignments and products that go to the root. Give the count and missing paths with move, add, plain and sheets.
 
 ## Then
 
-1. From then on work only with the XML or CSV you made, do not read the source again.
+1. When you prepared XML or CSV, use that file from then on. For a native Excel update, use the workbook and the sheet selection that you showed in the preview.
 2. Show the user the rows (all of them up to 30, else the first ones) with their sections, what is missing (no price…) and the currency (of the catalog, and of the workspace when it is another one). If the user corrects something, show the rows again.
 3. A new catalog from PDF: import_to_new_catalog with the name of the source and .xml as fileName (supplier-catalog.xml) and the whole XML in fileText. It changes nothing and gives a summary and a code. Show the summary with the rows and wait for a yes; then commit_import with the code starts the import at once.
 4. An update from PDF: match the rows with the catalog first, then make XML for the import with the key of the catalog and only the values that change; give it in fileText of preview_import.
