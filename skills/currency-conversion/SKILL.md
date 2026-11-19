@@ -1,6 +1,6 @@
 ---
 name: currency-conversion
-description: 'Show a catalog price in another currency, add a calculated currency column, use the effective bank rate, set a custom rate, or return to the bank rate ("show the prices in euros", "convert USD to EUR", "set my own rate"). Relabeling a money column without conversion belongs to catalog-edit instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
+description: 'Read a catalog exchange rate or bank quote, show a price in another currency, add a calculated currency column, set a custom rate, or return to the bank rate ("what is the USD to EUR rate", "show the prices in euros", "set my own rate"). Relabeling a money column without conversion belongs to catalog-edit instead. Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Convert catalog prices to another currency
@@ -11,6 +11,12 @@ Use only the connected service's tools, never its browser interface. Use the pro
 
 Follow the exact rules and refusals in tool answers, including next. This skill gives the order of the work.
 
+## Read an exchange rate
+
+1. For a catalog rate, identify the catalog and read `get_currency_rates`. A pair in either direction already exists. Report the applied rate, direction and mode. For a fixed pair, keep the stored direction and show any bank reference separately, with each date when available.
+2. If the list is complete and the pair is missing in both directions, say so and read a quote with `get_bank_currency_rate` in the requested direction. For a bank quote without a catalog, call it directly. Report the quote, actual bank and effective date when available. A quote is read-only and does not create a catalog pair or column. If the list is cut and neither direction appears, say that the catalog rate could not be verified.
+3. Pass any bank the user explicitly requires to `get_bank_currency_rate`. For an existing catalog pair, check the returned effective bank or the bank reference for a fixed rate. If the required bank differs from the actual bank or cannot be verified, tell the user and wait for an explicit change to the requirement before using another bank. If no quote is available, say so.
+
 ## Add a converted-price column
 
 1. Read `get_connection_info` and `list_catalogs`, then choose the catalog the user named. Ask only if the catalog, source money column or target currency is ambiguous.
@@ -19,7 +25,9 @@ Follow the exact rules and refusals in tool answers, including next. This skill 
 4. Call `create_currency_conversion_field` once for the selected source column and target currency, including the required bank only when the user explicitly named one. A clear request is enough because this adds a new column; do not ask for an extra confirmation. Name a bank only when the result reports it; a fallback provider is the actual bank.
 5. Read the result. Report the created column, direction, rate type, effective rate, bank and date when present. Read `get_catalog` and `get_currency_rates` again and verify the column and pair before claiming success.
 
-A missing pair is created automatically as a dynamic bank pair. An existing custom pair is shared and used as-is; tell the user that the new column uses that custom rate. The operation never rewrites the source prices.
+When adding a column, a missing pair is created automatically as a dynamic bank pair. An existing custom pair is shared and used as-is when the user does not require a bank; tell the user that the new column uses that custom rate. The operation never rewrites the source prices.
+
+If creation is refused because of a fixed pair or a different bank, tell the user which rate mode or bank is in use and wait. Continue with another rate only if the user explicitly accepts it. If the user requests returning a shared fixed pair to the bank rate, explain its impact and follow the separate preview and confirmation below. Verify the rate after the change and keep the requested bank when retrying the column creation.
 
 ## Set a custom rate or return to the bank rate
 
