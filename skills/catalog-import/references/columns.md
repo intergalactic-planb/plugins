@@ -36,7 +36,7 @@ After the import read the columns with get_catalog. If the price, the code or th
 
 ## Check currencies before creating a catalog or price column
 
-- Read supportedCurrencies from get_connection_info. Use this list for the new catalog and every new price column, including columns from native exports. Compare the source currencies after normalizing aliases such as RUR to RUB, BYB or BYR to BYN, and RMB to CNY.
+- Call list_supported_currencies before checking currencies. Use this list for the new catalog and every new price column, including columns from native exports. Compare the source currencies after normalizing aliases such as RUR to RUB, BYB or BYR to BYN, and RMB to CNY.
 - If a new price column has an unsupported currency, name the column and its source currency. Ask which supported currency to use and say that the numbers in the column will stay the same. Wait for the choice before starting the import or creating the column. Do not assume the catalog or workspace currency is the choice. If the list is empty, tell the user the service has no configured currencies and wait.
 - After the choice prepare the XML with the agreed currency in the field definition. Keep the numbers unchanged. Show the affected columns, source and replacement currencies, and the same amounts. Wait for a separate yes before writing.
 - Do not look up currency pairs or recalculate amounts for this replacement.
