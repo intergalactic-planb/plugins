@@ -1,6 +1,7 @@
 # Prices, counts, discounts and markups
 
 - Every price is a real amount in the proposal currency. `319.90` means 319.90; never convert it to or from cents.
+- For a new proposal, read its currency from the workspace. Tell the user when a catalog price amount is copied into a different currency without conversion.
 - `count` is the number of units. A product price and `finalPrice` are per unit; `totalPrice` is for all units.
 - Use the proposal and group `total` returned by the service. Do not add product totals yourself, especially for option groups.
 
@@ -9,7 +10,7 @@
 - `PERCENT`: percent off one unit. A value of 10 means 10%.
 - `MONEY`: amount off one unit. A value of 10 means 10 currency units, not the final price.
 - The web may show a money discount as an equivalent percent. If `finalPrice` is correct, the discount is correct. Do not retry it.
-- An amount off greater than the unit price is invalid. Do not replace it with another number.
+- A money discount can be at most the unit price. Use the new price if both change together. If the discount is too high, ask the user for a corrected amount and wait for their answer before retrying. If the product was already added without its discount, report that and apply the agreed discount to that existing line.
 
 ## Markup
 

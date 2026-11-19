@@ -24,14 +24,14 @@ If several proposals or products fit, show their business names and ask which on
 
 ## 2. Create a proposal
 
-1. Read references/groups-and-products.md.
+1. Read references/groups-and-products.md and read `get_connection_info` for the new proposal currency.
 2. For every catalog product, call find_products. Match the name or article and the catalog the user named. Ask when the match is not unique.
-3. A custom product is not searched in catalogs. Use it only when the user gives its name and price or clearly asks for a custom line. Never invent a price.
+3. For a custom product, use the name and unit price the user gives. Ask for either if missing before adding it. Use a group comment only if the user provides one.
 4. Read references/prices.md when there is a discount, markup, changed price or more than one unit.
-5. Before creation, tell the user the proposal name, customer, currency, groups, products, counts, prices and discounts. A clear request to create is enough; do not ask for another confirmation unless something is ambiguous.
+5. Before creation, tell the user the proposal name, customer, workspace currency, groups, products, counts, prices and discounts. If a catalog price uses a different currency, explain that its numeric amount is copied into the proposal currency without conversion. A clear request to create is enough; do not ask for another confirmation unless something is ambiguous.
 6. Call create_offer once. Use groups when the user asked for groups or options; otherwise use the single-group arguments.
 7. If the user asked for alternative options or a markup, use the ids returned by creation and call update_offer once: set only the requested groups to `ALTERNATIVE` and their selected products when requested, and set only the requested product markups. Check the proposal returned by this change.
-8. Check the final returned proposal. Tell the user its total and every product not added or added without its picture in either the creation or the follow-up change. Do not say that everything succeeded when either result has such an item.
+8. Check the final returned proposal. Report its total and every partial result, including products added without a discount or an image. Check whether a line is already in the proposal before retrying it.
 
 ## 3. Change a proposal
 
@@ -40,7 +40,7 @@ If several proposals or products fit, show their business names and ask which on
 3. Read the relevant reference:
    - groups, options, products and pictures: references/groups-and-products.md;
    - price, count, discount or markup: references/prices.md.
-4. Call update_offer once with only the requested fields. Use an empty string only to clear a supported text field on request. The proposal itself needs a nonempty name.
+4. Call update_offer once with only the requested fields. Send a new price and its requested money discount or markup in the same product change. Ask for missing names or unit prices before adding custom products. Use an empty string only to clear a supported text field on request. The proposal itself needs a nonempty name.
 5. Check the returned proposal: the changed values, groups, total, products not added and pictures not added.
 6. If the proposal was published before, say that the customer still sees the previous published version until the proposal is published again.
 

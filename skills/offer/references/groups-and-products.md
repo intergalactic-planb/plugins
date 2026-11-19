@@ -4,7 +4,7 @@
 
 - A catalog product keeps its catalog identity. Find it first; adding it to a proposal does not change the catalog.
 - When the same name or article exists in several catalogs, use the catalog named by the user. If none was named, ask which product they mean.
-- A custom product lives only in the proposal. It needs a name and a price from the user.
+- A custom product lives only in the proposal. Use the name and unit price the user gives. Ask for either if missing before adding the line.
 - A bad image link does not remove a product: report that the product was added without the picture.
 - A failed product does not cancel the other products. Report every item in `notAdded` with its reason.
 
@@ -12,6 +12,7 @@
 
 - One ordinary list: use one unnamed group, or name it only when the user gives a name.
 - Several sections, rooms or stages: create ordered `groups`.
+- Use a customer-visible group comment only when the user provides it.
 - Do not send both `groups` and the top-level products or group name.
 - Up to 20 groups and 50 products may be sent in one call. Do not silently drop the rest.
 
