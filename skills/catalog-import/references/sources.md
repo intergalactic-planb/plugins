@@ -15,7 +15,7 @@ The import takes only files: Excel (.xlsx, .xls), CSV (.csv) and XML (.xml, incl
 
 - The name exactly as written, letter by letter: do not change mixed Latin and Cyrillic letters, spaces or dashes.
 - The price is the number only, with a dot (12,50 → 12.50). Never make it up.
-- Ask which currency to use for the catalog if the choice is unclear. If the requested currency is refused, list the available choices from the refusal and wait for the user to pick one. Show the revised table and wait for a separate yes before importing. Keep every amount and its supported source currency. For an unsupported price column currency, follow references/columns.md before preparing the preview.
+- Ask which currency to use for the catalog if the choice is unclear. If the requested currency is refused, list the available choices from the refusal and wait for the user to pick one. Call import_to_new_catalog again, show the revised table with its new summary and wait for a separate yes to it before commit_import. Keep every amount and its supported source currency. For an unsupported price column currency, follow references/columns.md before preparing the preview.
 - The characteristics that most products have are columns of the kind text (a size, a material, a weight…); the ones of one product go into the description.
 - Pictures: a site gives them — a column of the kind list with the full addresses of the pictures of the product (https://…, as the page shows them, not made up); several in one cell are separated by ; (put such a cell in double quotes). A PDF gives none.
 - Never add a column that no source has.
@@ -71,8 +71,8 @@ Use UTF-8 and put the XML declaration at the start. Use the chosen catalog curre
 ## Then
 
 1. From then on work only with the XML or CSV you made, do not read the source again.
-2. Show the user the rows (all of them up to 30, else the first ones) with their sections, what is missing (no price…) and the currency (of the catalog, and of the workspace when it is another one). Wait for a yes; if the user corrects something, show the rows again.
-3. A new catalog from PDF: import_to_new_catalog with the name of the source and .xml as fileName (supplier-catalog.xml) and the whole XML in fileText. The import starts at once.
+2. Show the user the rows (all of them up to 30, else the first ones) with their sections, what is missing (no price…) and the currency (of the catalog, and of the workspace when it is another one). If the user corrects something, show the rows again.
+3. A new catalog from PDF: import_to_new_catalog with the name of the source and .xml as fileName (supplier-catalog.xml) and the whole XML in fileText. It changes nothing and gives a summary and a code. Show the summary with the rows and wait for a yes; then commit_import with the code starts the import at once.
 4. An update from PDF: match the rows with the catalog first, then make XML for the import with the key of the catalog and only the values that change; give it in fileText of preview_import.
 
 ## A link from the user

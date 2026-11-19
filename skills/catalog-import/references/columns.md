@@ -31,14 +31,14 @@ After the import read the columns with get_catalog. If the price, the code or th
 - Several currencies, or a doubt (the prices look like another currency): ask which one is the currency of the catalog.
 - The user names another one: take it.
 - Before the yes tell the user the currency of the catalog, and when it is not the one of the workspace, both ("the catalog will be in RUB, the workspace is in EUR").
-- Not every currency is allowed. If the requested catalog currency is refused, tell the user, list the choices in the refusal, and ask which to use. Wait for the answer and then show the revised table for a separate yes. Do not choose the workspace currency or start an import while waiting. If the list is unavailable, explain that the catalog cannot be created now.
+- Not every currency is allowed. If the requested catalog currency is refused, tell the user, list the choices in the refusal, and ask which to use. Wait for the answer, call import_to_new_catalog again and show the revised table with its new summary for a separate yes (an earlier yes does not count). Do not choose the workspace currency or start an import while waiting. If the list is unavailable, explain that the catalog cannot be created now.
 - The requested catalog currency can differ from the prices in the source. A chosen catalog currency is technical for amounts outside it. Use an explicit field definition for the main price, just as for any other price column. Keep amounts and supported source currencies as below. Change an unsupported currency only after the user has chosen its replacement.
 
 ## Check currencies before creating a catalog or price column
 
 - Call list_supported_currencies before checking currencies. Use this list for the new catalog and every new price column, including columns from native exports. Compare the source currencies after normalizing aliases such as RUR to RUB, BYB or BYR to BYN, and RMB to CNY.
 - If a new price column has an unsupported currency, name the column and its source currency. Ask which supported currency to use and say that the numbers in the column will stay the same. Wait for the choice before starting the import or creating the column. Do not assume the catalog or workspace currency is the choice. If the list is empty, tell the user the service has no configured currencies and wait.
-- After the choice prepare the XML with the agreed currency in the field definition. Keep the numbers unchanged. Show the affected columns, source and replacement currencies, and the same amounts. Wait for a separate yes before writing.
+- After the choice prepare the XML with the agreed currency in the field definition. Keep the numbers unchanged. Call the preview again (import_to_new_catalog or preview_import). Show the affected columns, source and replacement currencies, and the same amounts with its new summary. Wait for a separate yes to it before writing (an earlier yes does not count).
 - Do not look up currency pairs or recalculate amounts for this replacement.
 - When adding a money column by hand in an existing catalog, its initial currency is the catalog currency. If the catalog currency is unavailable, explain that the column cannot be added this way and wait.
 
