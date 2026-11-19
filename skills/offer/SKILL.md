@@ -31,7 +31,7 @@ If several proposals or products fit, show their business names and ask which on
 5. Before creation, tell the user the proposal name, customer, workspace currency, groups, products, counts, prices and discounts. If a catalog price uses a different currency, explain that its numeric amount is copied into the proposal currency without conversion. A clear request to create is enough; do not ask for another confirmation unless something is ambiguous.
 6. Call create_offer once. Use groups when the user asked for groups or options; otherwise use the single-group arguments.
 7. If the user asked for alternative options or a markup, use the ids returned by creation and call update_offer once: set only the requested groups to `ALTERNATIVE` and their selected products when requested, and set only the requested product markups. Check the proposal returned by this change.
-8. Check the final returned proposal. Report its total and every partial result, including products added without a discount or an image. Check whether a line is already in the proposal before retrying it.
+8. Check the final returned proposal. Report its total and every partial result, including products added without a discount or an image. Read the existing line before retrying. If the quantity was skipped with a refused discount, send the requested quantity and the agreed discount in one change to that line.
 
 ## 3. Change a proposal
 

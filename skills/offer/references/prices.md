@@ -10,7 +10,7 @@
 - `PERCENT`: percent off one unit. A value of 10 means 10%.
 - `MONEY`: amount off one unit. A value of 10 means 10 currency units, not the final price.
 - The web may show a money discount as an equivalent percent. If `finalPrice` is correct, the discount is correct. Do not retry it.
-- A money discount can be at most the unit price. Use the new price if both change together. If the discount is too high, ask the user for a corrected amount and wait for their answer before retrying. If the product was already added without its discount, report that and apply the agreed discount to that existing line.
+- A money discount can be at most the unit price. Use the new price if both change together. If the discount is too high, ask the user for a corrected amount and wait for their answer before retrying. If the product was already added without its discount, report that and read the existing line. If the requested quantity was also skipped, send it and the agreed discount together in one change to that existing line.
 
 ## Markup
 
