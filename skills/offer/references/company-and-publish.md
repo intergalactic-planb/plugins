@@ -10,13 +10,13 @@
 
 ## Before publication
 
-Read the proposal again and tell the user:
+Read the proposal again and check the company details. Tell the user:
 
 - proposal and customer;
 - groups and product positions;
 - counts, final prices, discounts or markups;
 - total and currency;
-- payment and delivery choices, or that none were returned.
+- payment and delivery choices on the proposal, with each missing or unread detail called out.
 
 Then call the publication preview. Its summary is authoritative.
 
@@ -28,6 +28,7 @@ Then call the publication preview. Its summary is authoritative.
 - Publication does not open access when access by the link is closed. Say so.
 - Republishing can clear the customer's answer to the previous version. Say which answer will be cleared.
 - Only a clear yes after the preview authorizes publication.
-- After publication, read the proposal again. `isPublished` means a version exists; `linkOpen` means the customer can open it now. This current state is the publication check.
+- The publication result checks the current proposal. Give the public link in chat when the result confirms access and includes the link. The public address must be available.
+- If access is closed, report that the proposal was published and the owner can open access separately in the web. If access could not be checked, read the proposal again. If access is open and the public link is unavailable, report that. Never publish a second version just to check access or get a link.
 - History can show publication as `VERSION_ADDED` without a separate `OFFER_PUBLISHED` event. Do not call that a failed publication when the current proposal is published.
 - `productCount` in the list and history is the total number of units. The publication preview counts product positions. Name the measure when the numbers differ.
