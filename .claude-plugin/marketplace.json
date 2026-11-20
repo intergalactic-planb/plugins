@@ -8,7 +8,7 @@
     {
       "name": "quotalogic",
       "source": "./",
-      "description": "Quotalogic skills for importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals. Connect the Quotalogic connector first."
+      "description": "Quotalogic skills for importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals. Adds the Quotalogic connection; sign in to it after install."
     }
   ]
 }

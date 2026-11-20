@@ -11,7 +11,14 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 
 ## Before you install
 
-Connect Quotalogic to your agent first: the plugin has the skills, while the connection gives the agent access to your workspace. In Quotalogic open the workspace settings, find the section about agents, and follow the steps for your app.
+The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, the staging server for now). After install, sign in once:
+
+- Claude Code: run `/mcp`, choose `plugin:quotalogic:quotalogic`, then **Authenticate**.
+- Codex: `codex mcp login quotalogic`.
+- Claude chat and Cowork: open the plugin's **Connectors** tab and connect it. On Team and Enterprise an Owner adds the connector for the organization first.
+- ChatGPT web: not confirmed that the bundled connection works; use the separate Quotalogic app (see below).
+
+If you already added the same server by hand, Claude Code keeps one copy, but Codex shows two. In Codex remove the manual one, for example `codex mcp remove quotcat`.
 
 The repository is private for now. Codex and desktop installation require read access and local git signed in to GitHub (for example `gh auth login`). ChatGPT web asks the importing workspace admin to authorize GitHub in the browser instead.
 
@@ -33,7 +40,7 @@ For an import check, make the agent show the column mapping and wait for a separ
 
 ## Install in ChatGPT web
 
-The current package contains skills only. To read or change Quotalogic data on the web, users also need a separately available and authenticated Quotalogic app with MCP tools.
+The package includes the Quotalogic connection, but it is not confirmed that ChatGPT web uses a connection bundled in a plugin. Until that is checked, users on the web also need a separately available and authenticated Quotalogic app with MCP tools.
 
 A workspace admin can import this private GitHub marketplace:
 

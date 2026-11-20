@@ -1,7 +1,7 @@
 {
   "name": "quotalogic",
-  "version": "0.5.27",
-  "description": "Quotalogic skills for importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals. Connect the Quotalogic connector first.",
+  "version": "0.5.28",
+  "description": "Quotalogic skills for importing and editing catalogs, converting catalog prices, and creating, changing and publishing commercial proposals. Adds the Quotalogic connection; sign in to it after install.",
   "author": {
     "name": "Quotalogic"
   },
@@ -10,7 +10,7 @@
   "interface": {
     "displayName": "Quotalogic",
     "shortDescription": "Catalog and proposal skills",
-    "longDescription": "Reusable workflows for Quotalogic catalogs, currency conversion, and commercial proposals. Requires a separate Quotalogic MCP connection.",
+    "longDescription": "Reusable workflows for Quotalogic catalogs, currency conversion, and commercial proposals. Adds the Quotalogic MCP connection; sign in to it after install.",
     "developerName": "Quotalogic",
     "category": "Productivity",
     "capabilities": ["Instructions"],
