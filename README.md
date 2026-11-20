@@ -9,6 +9,15 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 | `currency-conversion` | Adds a calculated price column in another currency, uses the effective bank rate, or changes the shared pair to a confirmed custom rate and back. |
 | `offer` | Finds, creates and changes a commercial proposal: products, groups or options, quantities, discounts and markups, company terms, and publication after your confirmation. |
 
+## Full install guides
+
+Step by step, for every app and plan, including installing from an archive without GitHub:
+
+- [Claude](docs/install-claude.md): Claude Code, the Code tab, Chat, Cowork, and organization rollout on Team and Enterprise.
+- [Codex and ChatGPT](docs/install-codex-chatgpt.md): Codex CLI, Codex in the ChatGPT desktop app, and ChatGPT web.
+
+The sections below are a short summary.
+
 ## Before you install
 
 The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, the staging server for now). After install, sign in once:
