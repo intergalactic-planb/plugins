@@ -79,10 +79,10 @@ A browser opens: sign in to Quotalogic, check the workspace, and confirm access.
 
 The assistant works in the workspace that was open in the browser when you confirmed access. To switch, change the workspace in the browser and run the command again.
 
-**If you connected Quotalogic by hand earlier** (for example under the name `quotcat`), you now have two identical connections. Remove the manual one:
+**If you connected Quotalogic by hand earlier** with `codex mcp add`, you now have two identical connections. Find the name of the manual one in `codex mcp list` (any name other than `quotalogic`) and remove it with that name:
 
 ```bash
-codex mcp remove quotcat
+codex mcp remove <name>
 ```
 
 Check: `codex mcp list` shows one line `quotalogic` with the Quotalogic address.
@@ -181,7 +181,7 @@ A member removes Quotalogic on its card in **Plugins**, if workspace rules allow
 | Path not found when installing from the archive | Check that the folder is still there and the path in the command is right |
 | Installing from the archive asks for GitHub access | Ask the Quotalogic team for an archive built for installing without GitHub |
 | `quotalogic` is missing after typing `$` | Restart the app, choose Codex, and start a new chat. In the terminal check `codex plugin list --marketplace quotalogic-plugins` |
-| Two identical connections in `codex mcp list` | Remove the manual one: `codex mcp remove quotcat` (the name from the list, not `quotalogic`) |
+| Two identical connections in `codex mcp list` | Remove the manual one: `codex mcp remove <name>` (the name from the list, not `quotalogic`) |
 | The assistant says there are no Quotalogic tools | In Codex run `codex mcp login quotalogic`. In ChatGPT web the admin can check that the data app is available to your account |
 
 ## For the team: building and testing

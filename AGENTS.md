@@ -27,6 +27,16 @@ Any change to this repository, however small (a skill, a reference, `.mcp.json`,
 - Commands, file names, menu names of the apps and code blocks stay the same in all languages; only the prose is translated.
 - Keep links between guides working: a link to a heading uses that heading's anchor in the same language.
 
+## Naming
+
+The product is called Quotalogic everywhere in this repository. Never mention Quotcat (as a name, a server name like `quotcat`, or a note that the two are the same) in any file or language. Where a guide needs the name of a connection the user added by hand, use a placeholder (`<name>`) and tell the user where to read it (`codex mcp list`). Check before you finish:
+
+```bash
+grep -rni quotcat --exclude-dir=.git --exclude=AGENTS.md .
+```
+
+The command must print nothing.
+
 ## Language
 
 Everything outside `docs/connect/` is English only: skills, references, manifests, `.mcp.json`, README. Not one Russian word (examples, trigger phrases, sample replies). Before you finish, scan for Cyrillic outside `docs/connect/`:
@@ -42,5 +52,6 @@ The command must print nothing.
 1. Version bumped and identical in both manifests.
 2. If a guide changed: the same change in `en`, `ru` and `cn`.
 3. No Cyrillic outside `docs/connect/`.
-4. `claude plugin validate .` passes (warnings about author and icon are known).
-5. If `../mcp` is cloned: run `bun test` there; it checks that every tool named in the skills exists on the server.
+4. No mention of Quotcat.
+5. `claude plugin validate .` passes (warnings about author and icon are known).
+6. If `../mcp` is cloned: run `bun test` there; it checks that every tool named in the skills exists on the server.

@@ -29,7 +29,7 @@ The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, th
 - Claude chat and Cowork: open the plugin's **Connectors** tab and connect it. On Team and Enterprise an Owner adds the connector for the organization first.
 - ChatGPT web: not confirmed that the bundled connection works; use the separate Quotalogic app (see below).
 
-If you already added the same server by hand, Claude Code keeps one copy, but Codex shows two. In Codex remove the manual one, for example `codex mcp remove quotcat`.
+If you already added the same server by hand, Claude Code keeps one copy, but Codex shows two. In Codex remove the manual one: `codex mcp remove <name>`, with its name from `codex mcp list` (not `quotalogic`).
 
 The repository is private for now. Codex and desktop installation require read access and local git signed in to GitHub (for example `gh auth login`). ChatGPT web asks the importing workspace admin to authorize GitHub in the browser instead.
 

@@ -81,10 +81,10 @@ codex mcp login quotalogic
 
 助手会在您确认授权时浏览器中打开的那个工作区内工作。要切换工作区，请在浏览器中切换后再次运行该命令。
 
-**如果您以前手动连接过 Quotalogic**（例如名称为 `quotcat`），现在会有两个相同的连接。请删除手动添加的那个：
+**如果您以前手动连接过 Quotalogic**（使用 `codex mcp add`），现在会有两个相同的连接。请在 `codex mcp list` 中找到手动添加的连接名称（除 `quotalogic` 以外的名称），并用该名称删除：
 
 ```bash
-codex mcp remove quotcat
+codex mcp remove <名称>
 ```
 
 检查：`codex mcp list` 只显示一行 `quotalogic`，地址为 Quotalogic 的地址。
@@ -183,7 +183,7 @@ codex plugin marketplace remove quotalogic-plugins
 | 从压缩包安装时找不到路径 | 检查文件夹是否还在、命令中的路径是否正确 |
 | 从压缩包安装时要求 GitHub 权限 | 请向 Quotalogic 团队索取为无 GitHub 安装而构建的压缩包 |
 | 输入 `$` 后没有 `quotalogic` | 重启应用，选择 Codex，开始新对话。在终端中用 `codex plugin list --marketplace quotalogic-plugins` 检查 |
-| `codex mcp list` 中有两个相同的连接 | 删除手动添加的那个：`codex mcp remove quotcat`（使用列表中的名称，不是 `quotalogic`） |
+| `codex mcp list` 中有两个相同的连接 | 删除手动添加的那个：`codex mcp remove <名称>`（使用列表中的名称，不是 `quotalogic`） |
 | 助手说没有 Quotalogic 工具 | 在 Codex 中运行 `codex mcp login quotalogic`。在 ChatGPT 网页版中，请管理员检查数据应用是否对您的账户可用 |
 
 ## 团队内部 构建与测试
