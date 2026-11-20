@@ -1,5 +1,7 @@
 # Quotalogic plugin for Claude
 
+**English** · [Русский](../ru/claude.md) · [中文](../cn/claude.md)
+
 ## What it is
 
 The plugin teaches Claude to work with Quotalogic: load a price list into a catalog, change prices, show prices in another currency, build and send a commercial proposal. Claude picks the right scenario by itself, always shows what it is about to do, and writes nothing until you say yes.
@@ -239,7 +241,7 @@ An organization can also forbid members to add their own plugin catalogs (the `s
 
 **Two archives from a clone of this repository** (built from what is committed to `main`):
 
-1. `quotalogic-plugins.zip`: for part 1 and for Codex. Build it with the commands in [install-codex-chatgpt.md](install-codex-chatgpt.md#for-the-team-building-and-testing); the Codex file swap there changes nothing for Claude.
+1. `quotalogic-plugins.zip`: for part 1 and for Codex. Build it with the commands in [codex-chatgpt.md](codex-chatgpt.md#for-the-team-building-and-testing); the Codex file swap there changes nothing for Claude.
 2. `quotalogic-plugin-claude.zip`: for parts 2 and 3. The content must be at the top of the archive:
 
    ```bash

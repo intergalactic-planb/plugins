@@ -1,5 +1,7 @@
 # Quotalogic plugin for Codex and ChatGPT
 
+**English** · [Русский](../ru/codex-chatgpt.md) · [中文](../cn/codex-chatgpt.md)
+
 ## What it is
 
 The plugin helps you load a price list, change prices, show them in another currency, or build a commercial proposal. Before an import the assistant shows what it is about to load and waits for a separate yes. For some actions, such as creating a commercial proposal, your direct request is enough.

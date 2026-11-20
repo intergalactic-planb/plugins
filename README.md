@@ -11,10 +11,12 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 
 ## Full install guides
 
-Step by step, for every app and plan, including installing from an archive without GitHub:
+Step by step, for every app and plan, including installing from an archive without GitHub. Available in English, Russian and Chinese:
 
-- [Claude](docs/install-claude.md): Claude Code, the Code tab, Chat, Cowork, and organization rollout on Team and Enterprise.
-- [Codex and ChatGPT](docs/install-codex-chatgpt.md): Codex CLI, Codex in the ChatGPT desktop app, and ChatGPT web.
+| | English | Russian | Chinese |
+| --- | --- | --- | --- |
+| Claude: Claude Code, the Code tab, Chat, Cowork, organization rollout | [claude.md](docs/connect/en/claude.md) | [claude.md](docs/connect/ru/claude.md) | [claude.md](docs/connect/cn/claude.md) |
+| Codex and ChatGPT: Codex CLI, the ChatGPT desktop app, ChatGPT web | [codex-chatgpt.md](docs/connect/en/codex-chatgpt.md) | [codex-chatgpt.md](docs/connect/ru/codex-chatgpt.md) | [codex-chatgpt.md](docs/connect/cn/codex-chatgpt.md) |
 
 The sections below are a short summary.
 
