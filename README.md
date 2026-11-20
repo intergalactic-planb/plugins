@@ -13,7 +13,8 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 
 The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, the staging server for now). After install, sign in once:
 
-- Claude Code: run `/mcp`, choose `plugin:quotalogic:quotalogic`, then **Authenticate**.
+- Claude app, **Code** tab: type only `/mcp`, then click **Connect** next to `quotalogic`.
+- Claude Code in a terminal: run `/mcp`, choose `plugin:quotalogic:quotalogic`, then **Authenticate**.
 - Codex: `codex mcp login quotalogic`.
 - Claude chat and Cowork: open the plugin's **Connectors** tab and connect it. On Team and Enterprise an Owner adds the connector for the organization first.
 - ChatGPT web: not confirmed that the bundled connection works; use the separate Quotalogic app (see below).
