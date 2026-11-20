@@ -9,12 +9,6 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 | `currency-conversion` | Adds a calculated price column in another currency, uses the effective bank rate, or changes the shared pair to a confirmed custom rate and back. |
 | `offer` | Finds, creates and changes a commercial proposal: products, groups or options, quantities, discounts and markups, company terms, and publication after your confirmation. |
 
-## Full install guides
-
-Step by step for each app: install, sign in, update, turn off and remove. Start page in [English](docs/connect/en/README.md), [Russian](docs/connect/ru/README.md), [Chinese](docs/connect/cn/README.md), or open the clickable page [docs/connect/index.html](docs/connect/index.html) in a browser (all three languages). Team notes (tests, plugin files for internal testing): [docs/build-archives.md](docs/build-archives.md).
-
-The sections below are a short summary.
-
 ## Before you install
 
 The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, the staging server for now). After install, sign in once:

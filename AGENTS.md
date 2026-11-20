@@ -20,17 +20,7 @@ Any change to this repository, however small (a skill, a reference, `.mcp.json`,
 
 ## Install guides in three languages
 
-`docs/connect/` holds the guides for customers in three languages, one folder each: `en`, `ru`, `cn` (Simplified Chinese). Each folder has the same files with the same sections in the same order: `README.md` (the start page: Claude or Codex/ChatGPT, then where you work), `claude-terminal.md`, `claude-desktop.md`, `claude-chat.md`, `codex-terminal.md`, `codex-desktop.md`, `chatgpt-chat.md`. Each guide has the sections install, sign in, update, turn off and remove, then notes and troubleshooting.
-
-Guides are for customers: short steps, no reasoning, no notes about what was or was not tested. Customers install only from this GitHub repository; the guides offer no other way. Team notes (tests, plugin files for internal testing, open questions) go to `docs/build-archives.md` (English).
-
-`docs/connect/index.html` is the clickable version of the same guides. It is generated; never edit it by hand. After any change in `docs/connect/` rebuild it and commit it with the change:
-
-```bash
-python3 docs/connect/build_html.py
-```
-
-The layout is in `docs/connect/template.html`; the start page turns the list of links to headings into the choice buttons and the tables of guides into cards, so keep that shape in every `README.md`.
+`docs/connect/` holds the guides for customers in three languages, one folder each: `en`, `ru`, `cn` (Simplified Chinese), with the same files and the same sections in the same order. Guides are for customers: short steps, no reasoning, no notes about what was or was not tested. Customers install only from this GitHub repository; the guides offer no other way.
 
 - A change to a guide in one language is made in the other two in the same change: same steps, commands, warnings, tables and links. Never leave one language ahead of the others.
 - A new guide is added in all three folders, and listed in the table in `README.md` and in the language line at the top of each guide.
@@ -60,7 +50,7 @@ The command must print nothing.
 ## Before you finish
 
 1. Version bumped and identical in both manifests.
-2. If a guide changed: the same change in `en`, `ru` and `cn`, and `index.html` rebuilt.
+2. If a guide changed: the same change in `en`, `ru` and `cn`.
 3. No Cyrillic outside `docs/connect/`.
 4. No mention of Quotcat.
 5. `claude plugin validate .` passes (warnings about author and icon are known).
