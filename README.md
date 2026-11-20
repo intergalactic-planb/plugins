@@ -11,12 +11,7 @@ Skills that help the agent work with your Quotalogic catalogs and commercial pro
 
 ## Full install guides
 
-Step by step, for every app and plan, including installing from an archive without GitHub. Available in English, Russian and Chinese:
-
-| | English | Russian | Chinese |
-| --- | --- | --- | --- |
-| Claude: Claude Code, the Code tab, Chat, Cowork, organization rollout | [claude.md](docs/connect/en/claude.md) | [claude.md](docs/connect/ru/claude.md) | [claude.md](docs/connect/cn/claude.md) |
-| Codex and ChatGPT: Codex CLI, the ChatGPT desktop app, ChatGPT web | [codex-chatgpt.md](docs/connect/en/codex-chatgpt.md) | [codex-chatgpt.md](docs/connect/ru/codex-chatgpt.md) | [codex-chatgpt.md](docs/connect/cn/codex-chatgpt.md) |
+Step by step for each app: install, sign in, update, turn off and remove. Start page in [English](docs/connect/en/README.md), [Russian](docs/connect/ru/README.md), [Chinese](docs/connect/cn/README.md), or open the clickable page [docs/connect/index.html](docs/connect/index.html) in a browser (all three languages). Team notes (tests, plugin files for internal testing): [docs/build-archives.md](docs/build-archives.md).
 
 The sections below are a short summary.
 
@@ -31,7 +26,7 @@ The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, th
 
 If you already added the same server by hand, Claude Code keeps one copy, but Codex shows two. In Codex remove the manual one: `codex mcp remove <name>`, with its name from `codex mcp list` (not `quotalogic`).
 
-The repository is private for now. Codex and desktop installation require read access and local git signed in to GitHub (for example `gh auth login`). ChatGPT web asks the importing workspace admin to authorize GitHub in the browser instead.
+Install from this GitHub repository; no GitHub account is needed.
 
 ## Install in Codex and ChatGPT desktop
 
@@ -53,11 +48,11 @@ For an import check, make the agent show the column mapping and wait for a separ
 
 The package includes the Quotalogic connection, but it is not confirmed that ChatGPT web uses a connection bundled in a plugin. Until that is checked, users on the web also need a separately available and authenticated Quotalogic app with MCP tools.
 
-A workspace admin can import this private GitHub marketplace:
+A workspace admin can import this GitHub marketplace:
 
 1. Open **Admin → Plugins → Add → Import marketplace**.
 2. Set **Source** to `https://github.com/intergalactic-planb/plugins`, leave **Path** empty, and set **Branch, tag, or commit** to `main`.
-3. Import the marketplace, authorize a GitHub account that can read the repository, and review **Import results**.
+3. Import the marketplace (allow GitHub access if asked) and review **Import results**.
 4. Open `Quotalogic` and set its installation policy to **Available** or **Installed** for the required roles. Make the separate Quotalogic MCP app available to the same roles.
 
 Users then open **Plugins**, select their workspace tab, install `Quotalogic` and the Quotalogic MCP app if needed, and start a new Chat or Work conversation. Type `@` and select the plugin or its `catalog-import` skill. On ChatGPT web, `@` invokes plugins and skills; `$` is for Codex.
