@@ -2,6 +2,8 @@
 
 [English](../en/claude-desktop.md) · [Русский](../ru/claude-desktop.md) · **中文**
 
+终端中的 `claude` 请见：[终端中的 Claude](claude-terminal.md)。
+
 使用插件需要 Claude 付费方案：Pro、Max、Team 或 Enterprise。`intergalactic-planb/plugins` 仓库必须是公开的。
 
 ## 安装

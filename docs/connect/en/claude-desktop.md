@@ -2,6 +2,8 @@
 
 [English](claude-desktop.md) · [Русский](../ru/claude-desktop.md) · [中文](../cn/claude-desktop.md)
 
+For `claude` in a terminal: [Claude in a terminal](claude-terminal.md).
+
 Plugins need a paid Claude plan: Pro, Max, Team or Enterprise. The `intergalactic-planb/plugins` repository must be public.
 
 ## Install

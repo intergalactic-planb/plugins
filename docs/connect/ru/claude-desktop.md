@@ -2,6 +2,8 @@
 
 [English](../en/claude-desktop.md) · **Русский** · [中文](../cn/claude-desktop.md)
 
+Для `claude` в терминале: [Claude в терминале](claude-terminal.md).
+
 Для плагинов нужна платная подписка Claude: Pro, Max, Team или Enterprise. Репозиторий `intergalactic-planb/plugins` должен быть публичным.
 
 ## Установить
