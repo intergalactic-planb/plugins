@@ -4,6 +4,8 @@
 
 终端中的 `claude` 请见：[终端中的 Claude](claude-terminal.md)。
 
+**Chat** 标签页请见：[Claude 聊天](claude-chat.md)。
+
 使用插件需要 Claude 付费方案：Pro、Max、Team 或 Enterprise。`intergalactic-planb/plugins` 仓库必须是公开的。
 
 ## 安装

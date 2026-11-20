@@ -4,6 +4,8 @@
 
 Для `claude` в терминале. Для приложения Claude: [Приложение Claude](claude-desktop.md).
 
+Для вкладки **Chat**: [Чат Claude](claude-chat.md).
+
 Для плагинов нужна платная подписка Claude: Pro, Max, Team или Enterprise. Репозиторий `intergalactic-planb/plugins` должен быть публичным.
 
 ## Установить

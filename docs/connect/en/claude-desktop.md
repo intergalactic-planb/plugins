@@ -4,6 +4,8 @@
 
 For `claude` in a terminal: [Claude in a terminal](claude-terminal.md).
 
+For the **Chat** tab: [Claude chat](claude-chat.md).
+
 Plugins need a paid Claude plan: Pro, Max, Team or Enterprise. The `intergalactic-planb/plugins` repository must be public.
 
 ## Install
