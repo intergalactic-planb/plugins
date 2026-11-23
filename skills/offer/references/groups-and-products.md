@@ -30,3 +30,10 @@
 - New products go to the group the user named. Without one, use the first ordinary group, not an options group.
 - An empty name or comment clears it. Omit a field to preserve it.
 - Adding an image keeps existing images; it does not replace them.
+
+## Deleting
+
+- Delete only a group or product the user named. Use `removeProducts` for products and `removeGroups` for groups.
+- Deleting a group deletes all its products too, and it cannot be undone. Before it, tell the user the group name and how many products it holds, and wait for a clear yes.
+- A group to delete cannot get products or changes in the same call. To add products and delete groups together, give `groupId` of a group that stays.
+- After the change, read the returned proposal and report what is gone and the new total.
