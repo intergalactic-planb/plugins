@@ -1,6 +1,6 @@
 ---
 name: offer
-description: 'Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal or quote: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit an existing offer, compare its history, or send/publish it to the customer ("make a quote", "change the offer", "send it to the customer"). Apply silently from the first reply: never announce skills, references or internal preparation.'
+description: 'Create, find, review, change and publish a commercial proposal or quote. Use when the user asks for an offer, proposal or quote: add catalog or custom products, groups or options, quantities, discounts or markups, customer details, payment or delivery terms, edit or copy an existing offer, compare its history, or send/publish it to the customer ("make a quote", "change the offer", "send it to the customer"). Apply silently from the first reply: never announce skills, references or internal preparation.'
 ---
 
 # Work with a commercial proposal
@@ -16,6 +16,8 @@ The answers of the tools have the exact rules and refusals. Follow them. This sk
 
 - Find or list proposals: use find_offers, then get_offer for the one the user means. For an outdated check, if `checked` is less than `total`, say that older proposals were not checked.
 - Explain what changed or what the customer answered: read the proposal, then get_offer_history.
+- Bring outdated products up to date: read references/groups-and-products.md.
+- Copy or duplicate a proposal: call copy_offer. The copy is a new draft; report its name and total and ask what to change in it. Do not publish it.
 - Create a proposal: section 2.
 - Change a proposal: section 3.
 - Publish, send or share it: section 5.
@@ -48,6 +50,7 @@ If several proposals or products fit, show their business names and ask which on
 
 Read references/company-and-publish.md.
 
+- To change the payment or delivery methods of this proposal, follow references/company-and-publish.md.
 - Call get_company_details when the user asks for the company's details, payment or delivery, or asks to prepare a proposal for sending.
 - Read get_offer to see which payment and delivery choices this proposal actually gives the customer.
 - Do not claim that a legal entity, payment or delivery was applied unless the returned proposal shows it.

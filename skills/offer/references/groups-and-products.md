@@ -31,6 +31,13 @@
 - An empty name or comment clears it. Omit a field to preserve it.
 - Adding an image keeps existing images; it does not replace them.
 
+## Outdated products
+
+- `get_offer` marks a product with `status`: `OUTDATED` means its catalog product changed after it was added; `ORPHAN` means it is gone from the catalog; `INDEPENDENT` is a custom product. No status means no information, not "up to date".
+- To bring outdated products up to date, list them by name with their current price and ask for a clear yes: the catalog data overwrites their name, price and description, including changes made in the proposal. Then use `actualizeProducts` with those ids only.
+- A product that is `ORPHAN` or `INDEPENDENT` cannot be updated; say so. Do not update and change the same product in one call.
+- After the update, read the returned proposal and report the changed prices and the new total.
+
 ## Deleting
 
 - Delete only a group or product the user named. Use `removeProducts` for products and `removeGroups` for groups.

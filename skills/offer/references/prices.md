@@ -2,6 +2,7 @@
 
 - Every price is a real amount in the proposal currency. `319.90` means 319.90; never convert it to or from cents.
 - For a new proposal, read its currency from the workspace. Tell the user when a catalog price amount is copied into a different currency without conversion.
+- To change the currency of an existing proposal, use a code from list_supported_currencies. Say first that the prices keep their numbers and are not converted (100 USD becomes 100 EUR), and wait for a clear yes. If the user wants converted prices, say that this is not available and that the prices have to be changed one by one.
 - `count` is the number of units. A product price and `finalPrice` are per unit; `totalPrice` is for all units.
 - Use the proposal and group `total` returned by the service. Do not add product totals yourself, especially for option groups.
 

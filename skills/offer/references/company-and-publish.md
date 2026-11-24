@@ -8,6 +8,15 @@
 - A delivery can be fixed-price, free or calculated outside the service. A payment commission is a percent.
 - Do not say that a legal entity, payment or delivery was selected or added unless the returned proposal says so.
 
+## Changing the delivery and payment of a proposal
+
+- To offer a delivery or payment method of the company, connect it by its id from get_company_details. A method already on the proposal cannot be connected again.
+- A method only for this proposal needs a name; ask the user for it, and for the price of a delivery or the commission of a payment. A delivery is free or has a fixed price. Do not invent a price or a commission.
+- Change or remove a method of the proposal by its id from get_offer. The proposal keeps its own copy: changing it does not change the company method.
+- Do not invent a method for the company. If the user wants a company method that does not exist, say that it has to be created in the web first.
+- Pictures and the order of the methods are not changed.
+- After the change, read the returned proposal and report the methods it now offers.
+
 ## Before publication
 
 Read the proposal again and check the company details. Tell the user:
