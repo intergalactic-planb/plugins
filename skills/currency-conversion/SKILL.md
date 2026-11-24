@@ -37,6 +37,13 @@ If creation is refused because of a fixed pair or a different bank, tell the use
 4. Only after that yes call `commit_set_currency_rate` with the preview's code, briefly repeating the change first. A changed request, expired code or failed commit requires a new preview and a new yes.
 5. Read `get_currency_rates` again. Report the effective type, rate, provider and date, and any mismatch or failure.
 
+## Add, delete or turn a currency pair
+
+1. Read `get_currency_rates`. If the pair exists in either direction, do not add it: to change its rate use the section above.
+2. To add a pair without a column, use `create_currency_pair`. Both currencies must be from the allowed list; if one is not, say so and offer the allowed ones. A bank pair needs no number; for a custom rate keep the user's exact decimal multiplier (`1 from = rate to`).
+3. To delete a pair or turn its direction, call `preview_change_currency_pair` with the exact direction from the list. Say how many calculated columns use the pair (the preview tells), and wait for a clear yes. Then call `commit_change_currency_pair` with the code. If the service refuses because the pair is in use, tell the user the reason and stop.
+4. Read `get_currency_rates` again and report the result.
+
 ## Meaning of bank and date
 
 - A bank rate uses the workspace's effective provider and may use a fallback. It does not guarantee ECB unless the result actually says ECB.
