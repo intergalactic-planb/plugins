@@ -17,7 +17,7 @@ The plugin brings both the skills and the Quotalogic connection (`.mcp.json`, th
 - Claude Code in a terminal: run `/mcp`, choose `plugin:quotalogic:quotalogic`, then **Authenticate**.
 - Codex: `codex mcp login quotalogic`.
 - Claude chat and Cowork: open the plugin's **Connectors** tab and connect it. On Team and Enterprise an Owner adds the connector for the organization first.
-- ChatGPT web: not confirmed that the bundled connection works; use the separate Quotalogic app (see below).
+- ChatGPT web in a managed workspace: connect the separately provided **Quotalogic MCP** app.
 
 If you already added the same server by hand, Claude Code keeps one copy, but Codex shows two. In Codex remove the manual one: `codex mcp remove <name>`, with its name from `codex mcp list` (not `quotalogic`).
 
@@ -41,16 +41,7 @@ For an import check, make the agent show the column mapping and wait for a separ
 
 ## Install in ChatGPT web
 
-The package includes the Quotalogic connection, but it is not confirmed that ChatGPT web uses a connection bundled in a plugin. Until that is checked, users on the web also need a separately available and authenticated Quotalogic app with MCP tools.
-
-A workspace admin can import this GitHub marketplace:
-
-1. Open **Admin → Plugins → Add → Import marketplace**.
-2. Set **Source** to `https://github.com/intergalactic-planb/plugins`, leave **Path** empty, and set **Branch, tag, or commit** to `main`.
-3. Import the marketplace (allow GitHub access if asked) and review **Import results**.
-4. Open `Quotalogic` and set its installation policy to **Available** or **Installed** for the required roles. Make the separate Quotalogic MCP app available to the same roles.
-
-Users then open **Plugins**, select their workspace tab, install `Quotalogic` and the Quotalogic MCP app if needed, and start a new Chat or Work conversation. Type `@` and select the plugin or its `catalog-import` skill. On ChatGPT web, `@` invokes plugins and skills; `$` is for Codex.
+The GitHub marketplace provides the skills package. Workspace members also need access to **Quotalogic MCP** and must sign in with their own Quotalogic account to read catalogs. See the [setup steps for admins and members](docs/connect/en/codex-desktop.md#set-up-quotalogic-for-a-chatgpt-workspace).
 
 Test with a whole-number price, require a separate yes after the column mapping, and read the created product back after import. The check is complete only when both the skill and Quotalogic MCP tools are available. A loaded skill with missing tools proves only that the GitHub package was imported.
 

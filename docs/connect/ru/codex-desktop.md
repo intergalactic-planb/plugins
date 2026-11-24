@@ -23,3 +23,24 @@
 
 1. Откройте карточку Quotalogic в **Plugins** и нажмите **Удалить**.
 2. Чтобы удалить и маркетплейс: **Plugins**, вкладка **Магазин**, удалите `Quotalogic Plugins`.
+
+## Подключение в организации ChatGPT
+
+Если сотрудник видит навыки Quotalogic, а чат не может прочитать каталоги, предоставьте ему отдельное подключение **Quotalogic MCP**.
+
+### Администратору
+
+1. Если плагин ещё не добавлен в организацию, откройте **Admin Console → Plugins → Add → Import marketplace**. В **Source** укажите `https://github.com/intergalactic-planb/plugins`, **Path** оставьте пустым, в **Branch, tag, or commit** укажите `main`. Подтвердите доступ к GitHub, если появится запрос.
+2. В **Admin Console → Plugins** откройте **Quotalogic**. Выберите **Available**, чтобы сотрудники могли устанавливать плагин, или **Installed** для автоматической установки.
+3. Если **Quotalogic MCP** ещё нет, в браузере переключитесь в пространство организации и откройте **Plugins → + → Add custom MCP server**. Укажите имя `Quotalogic MCP`, тестовый адрес `https://mcp-staging.quotalogic.io/mcp` и авторизацию **OAuth**. Нажмите **Create as a plugin** и проверьте, что ChatGPT обнаружил инструменты.
+4. В **Admin Console → Plugins** откройте **Quotalogic MCP** и настройте **Installation policy** для тех же сотрудников. В **Enterprise/Edu** доступ можно выдать по роли. В **Business** политика установки действует на всё рабочее пространство.
+
+### Сотруднику
+
+1. Переключитесь в рабочее пространство организации. В **Plugins** на вкладке организации установите **Quotalogic**, если он ещё не установлен.
+2. Откройте **Quotalogic MCP**, нажмите **Connect** и войдите под своим аккаунтом Quotalogic. Проверьте рабочее пространство Quotalogic и подтвердите доступ.
+3. В новом чате выберите **Quotalogic MCP** через `@` и спросите «Покажи мои каталоги». Подключение работает, если в ответе появились каталоги вашего пространства.
+
+Пометка **Desktop only** на карточке пакета навыков означает, что для этого пакета требуется настольное приложение. Отдельное подключение **Quotalogic MCP** можно использовать для доступа к каталогам в браузере.
+
+[Импорт маркетплейса](https://help.openai.com/en/articles/20001504-importing-and-syncing-plugin-marketplaces-from-github) · [Подключение MCP в ChatGPT](https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt)
