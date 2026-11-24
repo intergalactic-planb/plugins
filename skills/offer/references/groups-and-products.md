@@ -30,7 +30,14 @@
 - To take a set apart, give its `bundleId` in `disbandBundles`: the products stay in the offer as separate ones.
 - To delete a set with all its products, give its `bundleId` in `removeBundles`. It cannot be undone: tell the user the main product and how many products go, and wait for a clear yes.
 - A set to delete cannot have its products changed, removed or in a group to delete in the same call.
-- Building a new set, changing its main product and moving products between groups are not available: say so.
+- To build a set, give the main product and the products to add in `makeSets`; they go right after the main one in the order given. A product that is the main one of another set brings its whole set. To change the main product of a set, give the product in `makeMain` (it must be in a set and not be the main one).
+- After building or changing a set, read the offer again and check the order and the total.
+
+## Order
+
+- To move a product to another group or to a place in its group, use `moveProducts` with the group and a place counted from 1 among the other products of that group. The main product of a set moves the whole set; any other product of a set leaves its set: say so before moving it. Place 1 in a group of options makes that variant (or set) the main one.
+- To change the order of groups, use `moveGroups` with the place among the groups, counted from 1; it is done after the other changes.
+- Do not move a product in the same call in which it is changed, removed, or put in a set. After moving, read the offer again and check the order.
 
 ## Changes
 
