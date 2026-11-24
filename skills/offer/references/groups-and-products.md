@@ -22,6 +22,15 @@
 - `ALTERNATIVE`: the products are variants. Only the selected variant and its set count; when none is selected, the service uses its own default.
 - Change `selectedItemId` only to a product of that same group.
 - Use the total returned by the proposal. Products with `inTotal: false` do not count.
+- To make a group of options, create or change a group with type `ALTERNATIVE`. To choose the variant, set `selectedItemId` to the product the user named (the main product of a set chooses the whole set). Tell the user which variant counts in the total.
+
+## Sets
+
+- Products with the same `bundleId` are one set; the first of them (`mainOfSet`) is its main product. A set is chosen and counted as a whole in a group of options.
+- To take a set apart, give its `bundleId` in `disbandBundles`: the products stay in the offer as separate ones.
+- To delete a set with all its products, give its `bundleId` in `removeBundles`. It cannot be undone: tell the user the main product and how many products go, and wait for a clear yes.
+- A set to delete cannot have its products changed, removed or in a group to delete in the same call.
+- Building a new set, changing its main product and moving products between groups are not available: say so.
 
 ## Changes
 
@@ -40,7 +49,7 @@
 
 ## Deleting
 
-- Delete only a group or product the user named. Use `removeProducts` for products and `removeGroups` for groups.
+- Delete only a group, set or product the user named. Use `removeProducts` for products, `removeBundles` for sets and `removeGroups` for groups.
 - Deleting a group deletes all its products too, and it cannot be undone. Before it, tell the user the group name and how many products it holds, and wait for a clear yes.
 - A group to delete cannot get products or changes in the same call. To add products and delete groups together, give `groupId` of a group that stays.
 - After the change, read the returned proposal and report what is gone and the new total.
