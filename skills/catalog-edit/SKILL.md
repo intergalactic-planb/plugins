@@ -52,6 +52,8 @@ Read [references/products.md](references/products.md) for product values and cre
 - New products: read current columns and use create_products for products listed in the message, up to 100 at a time, in the requested section. Never invent names, prices or other values. Leave unspecified values out.
 - New products with a price in an extra money column: resolve the currency before creating the column or adding the products. If a replacement is needed, ask as above and wait. Create the column, use update_catalog to set its currency if different from the catalog's, then verify it with get_catalog. Send all requested prices together in create_products. The currency choice is enough to proceed without a second confirmation.
 
+- Pictures of products: when the user gives links to pictures for products, find the products and call add_product_images. A picture is added to the existing ones; deleting or reordering is not available. A link that is not a picture, is bigger than 10 MB, or cannot be downloaded is skipped: name each such link and its reason. If the catalog has no column for pictures, say so and ask which list column should hold them; it needs the role images (update_catalog) first.
+
 These additions run at once on a clear request; do not ask for an extra yes. Check the returned result and read the created catalog, section, column or products. Name partial failures; do not blindly repeat creation.
 
 ## 5. Read or list products
@@ -64,6 +66,6 @@ These additions run at once on a clear request; do not ask for an extra yes. Che
 ## Limits and failures
 
 - Respect the connection's workspace, rights, limits and refusals. Stop on missing access or an unavailable required tool; never switch to a browser or another write method.
-- Deletion, sorting, images, calculated column edits and inherited settings are not available through this workflow. Tell the user the actual limitation instead of attempting a workaround.
+- Deletion, sorting, deleting or reordering pictures, calculated column edits and inherited settings are not available through this workflow. Tell the user the actual limitation instead of attempting a workaround.
 - Changing a money column's currency keeps the numbers. A request to convert amounts or change an exchange rate is a separate task; do not simulate it by relabeling the currency.
 - Prices and numbers are already real amounts. Never divide or multiply them to compensate for internal storage.
