@@ -17,6 +17,7 @@ The answers of the tools have the exact rules and refusals. Follow them. This sk
 - Find or list proposals: use find_offers, then get_offer for the one the user means. For an outdated check, if `checked` is less than `total`, say that older proposals were not checked.
 - Explain what changed or what the customer answered: read the proposal, then get_offer_history.
 - Bring outdated products up to date: read references/groups-and-products.md.
+- Customer phone, email and the private note are read and written like the customer name. The private note is for the team: never put it in a message, summary or text meant for the customer. To clear a field, send an empty string and only on request.
 - Copy or duplicate a proposal: call copy_offer. The copy is a new draft; report its name and total and ask what to change in it. Do not publish it.
 - Create a proposal: section 2.
 - Change a proposal: section 3.
