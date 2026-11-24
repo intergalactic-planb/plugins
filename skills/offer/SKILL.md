@@ -60,7 +60,7 @@ Read references/company-and-publish.md.
 4. Show its summary in business words. Include the customer, number of product positions, total and currency, payment and delivery choices, and any missing or unread details. Say whether this is a new version, whether link access is open, closed or unknown, and which customer answer will be cleared, if any.
 5. Say that publication cannot be undone. Wait for a clear yes to this exact summary.
 6. Call commit_publish_offer with the code. Never publish on an earlier or vague yes.
-7. Report the publication and customer access from the result. Give a clickable public link in chat only when the result confirms access and includes the link. If access is closed, say the owner can open it separately in the web. If access could not be checked, read get_offer again without publishing another version. If access is open and the link is unavailable, say so.
+7. Report the publication and customer access from the result. Give a clickable public link in chat only when the result confirms access and includes the link. If access is closed, say the proposal is published but the customer cannot open it yet, and ask whether to open access by the link. Only on a clear yes call open_offer_access and give the link from its result. On a no, leave access closed and do not ask again. If access could not be checked, read get_offer again without publishing another version. If access is open and the link is unavailable, say so.
 
 ## Never
 

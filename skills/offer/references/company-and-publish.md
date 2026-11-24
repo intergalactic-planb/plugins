@@ -25,10 +25,10 @@ Then call the publication preview. Its summary is authoritative.
 - Publication creates the customer-visible version and cannot be undone.
 - A changed draft does not change the version already visible to the customer.
 - Republishing makes a new version at the same link.
-- Publication does not open access when access by the link is closed. Say so.
+- Publication does not open access when access by the link is closed. Say so, and after publishing ask whether to open it.
 - Republishing can clear the customer's answer to the previous version. Say which answer will be cleared.
 - Only a clear yes after the preview authorizes publication.
 - The publication result checks the current proposal. Give the public link in chat when the result confirms access and includes the link. The public address must be available.
-- If access is closed, report that the proposal was published and the owner can open access separately in the web. If access could not be checked, read the proposal again. If access is open and the public link is unavailable, report that. Never publish a second version just to check access or get a link.
+- If access is closed, report that the proposal was published, then ask whether to open access by the link. On a clear yes call open_offer_access and give its link; on a no leave it closed. Never open access unasked, and never close it. If access could not be checked, read the proposal again. If access is open and the public link is unavailable, report that. Never publish a second version just to check access or get a link.
 - History can show publication as `VERSION_ADDED` without a separate `OFFER_PUBLISHED` event. Do not call that a failed publication when the current proposal is published.
 - `productCount` in the list and history is the total number of units. The publication preview counts product positions. Name the measure when the numbers differ.
