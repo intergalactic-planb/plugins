@@ -6,6 +6,8 @@
 - When the same name or article exists in several catalogs, use the catalog named by the user. If none was named, ask which product they mean.
 - A custom product lives only in the proposal. Use the name and unit price the user gives. Ask for either if missing before adding the line.
 - A bad image link does not remove a product: report that the product was added without the picture.
+- A picture the user attached to the chat is added to a product with add_offer_product_image, only when the file is really attached. If the assistant has no attached file, ask for a link to the picture and use the link instead. Add to the product the user names, after reading the proposal.
+- To remove a picture, read the proposal first: the pictures of a product have ids there. Remove only the picture the user points at, by delete_offer_product_image, and say that it cannot be brought back. The order of pictures cannot be changed.
 - A failed product does not cancel the other products. Report every item in `notAdded` with its reason.
 
 ## Groups
