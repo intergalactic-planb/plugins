@@ -23,6 +23,8 @@ If you already added the same server by hand, Claude Code keeps one copy, but Co
 
 Install from this GitHub repository; no GitHub account is needed.
 
+For Alice AI, follow the [personal MCP plugin guide](docs/connect/en/alice-act.md).
+
 ## Install in Codex and ChatGPT desktop
 
 ```bash
