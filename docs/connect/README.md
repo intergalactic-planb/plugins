@@ -7,4 +7,4 @@
 | Claude in the terminal | [en](en/claude-terminal.md) | [ru](ru/claude-terminal.md) | [cn](cn/claude-terminal.md) |
 | ChatGPT app (Codex and ChatGPT tabs) | [en](en/codex-desktop.md) | [ru](ru/codex-desktop.md) | [cn](cn/codex-desktop.md) |
 | Codex in the terminal | [en](en/codex-terminal.md) | [ru](ru/codex-terminal.md) | [cn](cn/codex-terminal.md) |
-| Alice AI (Действуй!) | [en](en/alice-act.md) | [ru](ru/alice-act.md) | [cn](cn/alice-act.md) |
+| Alice AI, Alice AI for Business, and Alice AI Pro for Business | [en](en/alice-act.md) | [ru](ru/alice-act.md) | [cn](cn/alice-act.md) |
