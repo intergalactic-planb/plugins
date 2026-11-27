@@ -8,7 +8,9 @@ Create a personal plugin for the Quotalogic staging server in **Действуй
 
 1. Open your staging workspace settings in Quotalogic and choose **Агенты и доступ** (**Agents and access**).
 2. Check that agent access is on. The workspace owner or an admin can turn it on with **Разрешить подключать агентов** (**Allow connecting agents**).
-3. Below **Как подключить плагин к агенту** (**How to connect the plugin to an agent**), click **Получить Client ID для Алисы** (**Get Alice Client ID**) and copy the value from the field. After refreshing the page in the same browser, you can copy the last issued ID again. Use the button again for each new personal plugin. If you saved an ID and sign-in fails because it expired, generate a fresh one.
+3. Below **Как подключить плагин к агенту** (**How to connect the plugin to an agent**), click **Получить Client ID для Алисы** (**Get Alice Client ID**) and copy the value from the field. After refreshing the page in the same browser, you can copy the last issued ID again. Use the button again for each new personal plugin.
+
+Generating a new Client ID leaves the previous one registered. If the previous ID has no connection or sign-in in progress, automatic cleanup can remove it once it is more than 24 hours old. If the ID has expired, generate a new one. An ID used to create a connection is kept even after that connection is revoked.
 
 ## Create the plugin
 
@@ -42,4 +44,4 @@ Create a personal plugin for the Quotalogic staging server in **Действуй
 2. If Alice shows **Попробуйте войти через Яндекс Браузер**, click **Продолжить как обычно** to open the sign-in page in your current browser.
 3. Sign in to Quotalogic, check the workspace on the consent page and click **Разрешить**.
 4. Back in Alice, the plugin card shows **Приложение подключено**. Click **Попробовать** and ask “Show my catalogs using Quotalogic Staging.” Alice should return your workspace's catalogs. Open **Работала** in the task to see which plugin Alice called.
-5. In **Мои подключения** (**My connections**), the connection appears as **Алиса AI** (**Alice AI**). Connecting Alice again replaces your previous Alice connection in this workspace.
+5. In **Мои подключения** (**My connections**), the connection appears as **Алиса AI** (**Alice AI**). Your connected plugin keeps working when you generate a new Client ID. The previous Alice connection is revoked when you approve a new Alice connection with the same account in the same workspace.
